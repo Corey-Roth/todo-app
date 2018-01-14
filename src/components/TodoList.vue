@@ -1,7 +1,8 @@
 <template>
     <div class="todo-list">
-        <div class="row">
-            <button v-on:click="toggleView" class="toggle">List view</button>
+        <div class="row button-row">
+            <button v-on:click="toggleView" class="toggle" v-bind:class="{ list: isList }"><img src="../assets/list-view.svg"/></button>
+            <button v-on:click="toggleView" class="toggle" v-bind:class="{ list: !isList }"><img src="../assets/grid-view.svg"/></button>
         </div>
         <div class="row" v-bind:class="{ list: isList }">
             <todo
@@ -71,13 +72,33 @@
     .toggle {
         background: none;
         border: 0 none;
+        display: inline-block;
         cursor: pointer;
         margin: 1em 0;
+        opacity: 0.33;
+        padding: 0 0.5em;
         font-size: 1em;
+        width: auto;
+    }
+
+    .toggle img {
+        height: 1.5em;
+        width: 1.5em;
     }
 
     .toggle:hover {
-        color: #e41f35;
+        opacity: 1;
+    }
+
+    .toggle.list {
+        display: inline-block;
+        opacity: 1;
+        padding: 0 0.5em;
+    }
+
+    .row.button-row {
+        display: flex;
+        justify-content: flex-end;
     }
 
     @media screen and (max-width: 840px) {

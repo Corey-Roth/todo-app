@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <style>
+      .\36 8c75483-ae6f-4eaa-977c-422ebc44d046 {
+        fill: #333;
+      }
+    </style>
+  </defs>
+  <title>grid-view</title>
+  <g id="f4bb3c64-7f41-48d1-8516-8949ea21ab72" data-name="Layer 2">
+    <g id="bb57ec92-33af-4fb7-bb94-1c838e1ca5d7" data-name="Layer 1">
+      <g id="eba5f14c-b45a-41f0-a918-303e261be9b2" data-name="grid view">
+        <g id="cd1fc97d-5c9f-4639-a846-3edda61f7442" data-name="grid view">
+          <g id="3d3a9a0a-510a-4162-8908-499265aee69c" data-name="Rectangle 1">
+            <rect class="68c75483-ae6f-4eaa-977c-422ebc44d046" width="14.7" height="14.67"/>
+          </g>
+          <g id="e1995920-e86a-4dbc-9f6e-9e81b69146f5" data-name="Rectangle 1 copy">
+            <rect class="68c75483-ae6f-4eaa-977c-422ebc44d046" x="17.3" width="14.7" height="14.67"/>
+          </g>
+          <g id="6a75fc17-1a25-4a63-9515-1b41c6077794" data-name="Rectangle 1 copy 2">
+            <rect class="68c75483-ae6f-4eaa-977c-422ebc44d046" y="17.3" width="14.7" height="14.67"/>
+          </g>
+          <g id="7255018d-2286-4e80-946f-02f45d215269" data-name="Rectangle 1 copy 2">
+            <rect class="68c75483-ae6f-4eaa-977c-422ebc44d046" x="17.3" y="17.3" width="14.7" height="14.67"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

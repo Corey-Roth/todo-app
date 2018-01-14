@@ -175,6 +175,11 @@
         }
         #app {
             box-shadow: 0 0 0 0;
+            padding: 2em 0;
+        }
+
+        h1 {
+            font-size: 2em;
         }
     }
 </style>

@@ -1,16 +1,21 @@
 <template>
-    <div class="create-form">
-        <div class="field">
-            <label>Title</label>
-            <input v-model="titleText" type="text" class="styled-input">
-        </div>
-        <div class="field">
-            <label>Description</label>
-            <input v-model="descriptionText" type="text" class="styled-input">
-        </div>
-        <button class="primary" v-on:click="sendForm()">
-            Create
-        </button>
+    <div class="create">
+            <div class="create-form"  v-bind:class="{ active: isActive }">
+                <h2 class='mobile-only'>Add a new task</h2>
+                <div class="field">
+                    <label>Title</label>
+                    <input v-model="titleText" type="text" class="styled-input">
+                </div>
+                <div class="field">
+                    <label>Description</label>
+                    <input v-model="descriptionText" type="text" class="styled-input">
+                </div>
+                <button class="primary" v-on:click="sendForm()">
+                    Create
+                </button>
+                <button class="secondary mobile-only" v-on:click="toggleForm">Cancel</button>
+            </div>
+        <button class="toggle-form mobile-only" v-on:click="toggleForm">+</button>
     </div>
 </template>
 
@@ -21,6 +26,7 @@
         titleText: '',
         descriptionText: '',
         isCreating: false,
+        isActive: false,
       };
     },
     methods: {
@@ -39,6 +45,9 @@
           this.isCreating = false;
         }
       },
+        toggleForm() {
+            this.isActive = !this.isActive;
+        },
     },
   };
 </script>
@@ -51,7 +60,8 @@
         //border-top: 1px solid #CCCCCC;
         display: flex;
         margin: 0 0 4.5em;
-        padding: 2em;
+        padding: 2em 4.5em;
+        text-align: left;
         width: 100%;
     }
 
@@ -85,19 +95,94 @@
         width: 100%;
     }
 
-    @media screen and (max-width: 767px) {
+    .toggle-form {
+        background: #FFFFFF;
+        border: 0 none;
+        border-radius: 0.5em;
+        bottom: 0.33em;
+        box-shadow: 0 2px 2px 0 rgba(20,0,0,0.16), 0 0 0 1px rgba(20,0,0,0.08);
+        color: #333333;
+        font-size: 3em;
+        line-height: 1;
+        height: 1em;
+        position: fixed;
+        right: 0.33em;
+        width: 1em;
+        z-index: 2;
+    }
+
+    .toggle-form:hover {
+        box-shadow: 0 4px 4px 0 rgba(20,0,0,0.16), 0 0 0 1px rgba(20,0,0,0.08);
+        color: #e41f35;
+        cursor: pointer;
+    }
+
+    .create-form h2 {
+        border-bottom: 1px solid #CCCCCC;
+        font-size: 2em;
+        font-weight: 300;
+        margin: 0 0 0.5em;
+        padding-bottom: 0.5rem;
+        width: 100%;
+    }
+
+    .modal-enter-active, .modal-leave-active {
+      transition: opacity 100ms ease-out;
+    }
+
+    .modal-enter, .modal-leave-to {
+      opacity: 0;
+    }
+
+    .mobile-only {
+        display: none;
+    }
+
+    @media screen and (max-width: 840px) {
         .create-form {
+            background: #ffffff;
+            bottom: 0;
+            display: none;
+            left: 0;
+            margin: 0;
+            opacity: 0;
+            position: fixed;
+            right: 0;
+            top: 0;
+            transform: all 300ms ease;
+            z-index: 3;
+        }
+
+        .active.create-form {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            opacity: 1;
+        }
+
+        .mobile-only {
+            display: block;
+        }
+
+        .toggle-form {
             display: block;
         }
 
         .create-form .primary {
             margin: 0;
+            max-width: 100%;
+            width: 100%;
         }
 
         .field {
             margin-bottom: 2em;
             padding: 0;
             width: 100%;
+        }
+
+        .create-form .styled-input {
+            border: 1px solid #cccccc;
+            background: #ffffff;
         }
     }
 </style>

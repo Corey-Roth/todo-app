@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <style>
+      .d37a7024-ef8f-4237-a49d-2b68a556f4b4 {
+        fill: #333;
+      }
+    </style>
+  </defs>
+  <title>list-view</title>
+  <g id="4344d44b-86e5-4354-91fa-18b1c58a0f95" data-name="Layer 2">
+    <g id="3737669a-38bb-4028-b122-3c219afd5950" data-name="Layer 1">
+      <g id="6a4f2c72-12ab-4db4-9b2b-316115b6bb60" data-name="list view">
+        <g id="cf96b648-ac85-4dc8-89ae-4b8a323ba88b" data-name="list view">
+          <g id="152d06be-2646-46f6-9477-762dfad0520d" data-name="Rectangle 1">
+            <rect class="d37a7024-ef8f-4237-a49d-2b68a556f4b4" width="8" height="6.67"/>
+          </g>
+          <g id="ffb550cf-9f5c-45af-8dac-c76bb3fb20b7" data-name="Rectangle 1 copy">
+            <rect class="d37a7024-ef8f-4237-a49d-2b68a556f4b4" x="10.7" width="21.3" height="6.67"/>
+          </g>
+          <g id="197b545e-8acd-4363-b346-5bb8e64a0875" data-name="Rectangle 1 copy 3">
+            <rect class="d37a7024-ef8f-4237-a49d-2b68a556f4b4" y="9.3" width="8" height="5.33"/>
+          </g>
+          <g id="5f19d4d0-9a1a-4fd2-a98c-1760305149a5" data-name="Rectangle 1 copy 3">
+            <rect class="d37a7024-ef8f-4237-a49d-2b68a556f4b4" x="10.7" y="9.3" width="21.3" height="5.33"/>
+          </g>
+          <g id="d5abb718-3594-44ff-a473-061b1a9582d0" data-name="Rectangle 1 copy 4">
+            <rect class="d37a7024-ef8f-4237-a49d-2b68a556f4b4" y="17.3" width="8" height="5.33"/>
+          </g>
+          <g id="e30df830-6a54-4311-9dd0-2a220d0fd3b1" data-name="Rectangle 1 copy 4">
+            <rect class="d37a7024-ef8f-4237-a49d-2b68a556f4b4" x="10.7" y="17.3" width="21.3" height="5.33"/>
+          </g>
+          <g id="726d81ac-2d53-4cdc-8184-a94c205db296" data-name="Rectangle 1 copy 5">
+            <rect class="d37a7024-ef8f-4237-a49d-2b68a556f4b4" y="25.3" width="8" height="6.67"/>
+          </g>
+          <g id="bc90c3da-6790-487b-9931-2a2e0aca2814" data-name="Rectangle 1 copy 5">
+            <rect class="d37a7024-ef8f-4237-a49d-2b68a556f4b4" x="10.7" y="25.3" width="21.3" height="6.67"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

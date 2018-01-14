@@ -151,8 +151,11 @@
     }
 
     .secondary {
+        background: none;
+        border: 0 none;
         color: #777777;
         cursor: pointer;
+        font-size: 1em;
         line-height: 1;
         padding: 1em 2em 0;
         width: 100%;
@@ -212,7 +215,7 @@
     }
 
     .dark {
-        background: #ebebeb;
+        border: 1px solid #cccccc;
         margin-bottom: 1.5em;
         padding: 0.5em 1em;
     }
@@ -271,13 +274,14 @@
 
     @media screen and (max-width: 840px) {
         .card {
-            border-radius: 0;
+            border-radius: 0.25em;
             margin: 0 0 0.5rem;
             width: 100%;
         }
 
         .list .card {
             display: block;
+            padding: 1em;
         }
 
         .list .content {
@@ -292,12 +296,12 @@
 
         .list .primary, .list .secondary, .list .completed {
             display: inline-block;
-            max-width: calc(66.66% - 1em);
+            padding: 1em;
+            max-width: calc(75% - 1em);
         }
 
         .list .secondary {
-            max-width: 33.33%;
-            padding: 1em;
+            max-width: 25%;
         }
     }
 </style>
