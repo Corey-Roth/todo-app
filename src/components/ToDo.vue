@@ -98,10 +98,12 @@
         display: flex;
         flex-wrap: wrap;
         margin: 0.25em 0;
+        padding: 1.5em 4.5em 0;
         width: 100%;
     }
 
     .list .content {
+        margin-bottom: 0;
         width: calc(100% - 12em);
     }
 
@@ -114,6 +116,7 @@
         max-width: none;
         padding: 1em 0;
         text-align: left;
+        width: calc(100% - 12em);
     }
 
     .list .edit {
@@ -281,10 +284,11 @@
 
         .list .card {
             display: block;
-            padding: 1em;
+            padding: 1.5em 1em;
         }
 
         .list .content {
+            margin-bottom: 2em;
             width: 100%;
         }
 

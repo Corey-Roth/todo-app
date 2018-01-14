@@ -146,6 +146,7 @@
             left: 0;
             margin: 0;
             opacity: 0;
+            padding: 2em;
             position: fixed;
             right: 0;
             top: 0;
@@ -156,7 +157,7 @@
         .active.create-form {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
             opacity: 1;
         }
 
@@ -169,9 +170,20 @@
         }
 
         .create-form .primary {
+            bottom: 2em;
+            left: 2em;
             margin: 0;
             max-width: 100%;
-            width: 100%;
+            position: fixed;
+            width: calc(66vw - 2em);
+        }
+
+        .create-form .secondary {
+            bottom: 2em;
+            padding: 2em 1em;
+            position: fixed;
+            right: 2em;
+            width: calc(33vw - 2em);
         }
 
         .field {

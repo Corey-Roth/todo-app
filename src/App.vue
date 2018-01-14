@@ -3,7 +3,6 @@
         <template>
             <div>
                 <create-todo v-on:create-todo="createTodo"></create-todo>
-                <div class="row"><h1>Corey's to-do list</h1></div>
                 <todo-list v-bind:todos="todos"></todo-list>
             </div>
         </template>
@@ -88,8 +87,9 @@
         font-weight: 300;
         letter-spacing: -0.0125em;
         line-height: 1;
-        margin: 0 0 1rem;
+        margin: 0;
         text-align: left;
+        width: calc(100% - 6rem);
     }
 
     #app {
@@ -175,7 +175,7 @@
         }
         #app {
             box-shadow: 0 0 0 0;
-            padding: 2em 0;
+            padding: 2em 0 0;
         }
 
         h1 {

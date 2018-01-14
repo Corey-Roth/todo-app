@@ -1,6 +1,7 @@
 <template>
     <div class="todo-list">
         <div class="row button-row">
+            <h1>Corey's to-do list</h1>
             <button v-on:click="toggleView" class="toggle" v-bind:class="{ list: isList }"><img src="../assets/list-view.svg"/></button>
             <button v-on:click="toggleView" class="toggle" v-bind:class="{ list: !isList }"><img src="../assets/grid-view.svg"/></button>
         </div>
@@ -74,7 +75,7 @@
         border: 0 none;
         display: inline-block;
         cursor: pointer;
-        margin: 1em 0;
+        margin: 0;
         opacity: 0.33;
         padding: 0 0.5em;
         font-size: 1em;
@@ -97,14 +98,16 @@
     }
 
     .row.button-row {
+        align-items: center;
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
+        margin-bottom: 1em;
     }
 
     @media screen and (max-width: 840px) {
         .row {
             display: block;
-            padding: 0 2em;
+            padding: 0 1em;
         }
     }
 </style>
