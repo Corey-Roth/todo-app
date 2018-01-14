@@ -79,7 +79,7 @@
 
     #app {
       margin: 0 auto;
-      padding: 0 0 4.5em;
+      padding: 14em 0 4.5em;
       text-align: center;
       width: 100%;
     }
@@ -151,9 +151,6 @@
     }
 
     @media screen and (max-width: 840px) {
-        body {
-            background: #FFFFFF;
-        }
         #app {
             box-shadow: 0 0 0 0;
             padding: 2em 0 0;

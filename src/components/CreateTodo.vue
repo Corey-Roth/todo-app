@@ -1,19 +1,21 @@
 <template>
     <div class="create">
             <div class="create-form"  v-bind:class="{ active: isActive }">
-                <h2 class='mobile-only'>Add a new task</h2>
-                <div class="field">
-                    <label>Title</label>
-                    <input v-model="titleText" type="text" class="styled-input">
+                <div class="row">
+                    <h2 class='mobile-only'>Add a new task</h2>
+                    <div class="field">
+                        <label>Title</label>
+                        <input v-model="titleText" type="text" class="styled-input">
+                    </div>
+                    <div class="field">
+                        <label>Description</label>
+                        <input v-model="descriptionText" type="text" class="styled-input">
+                    </div>
+                    <button class="primary" v-on:click="sendForm()">
+                        Create
+                    </button>
+                    <button class="secondary mobile-only" v-on:click="toggleForm">Cancel</button>
                 </div>
-                <div class="field">
-                    <label>Description</label>
-                    <input v-model="descriptionText" type="text" class="styled-input">
-                </div>
-                <button class="primary" v-on:click="sendForm()">
-                    Create
-                </button>
-                <button class="secondary mobile-only" v-on:click="toggleForm">Cancel</button>
             </div>
         <button class="toggle-form mobile-only" v-on:click="toggleForm">+</button>
     </div>
@@ -58,23 +60,31 @@
         background: #ffffff;
         box-shadow: 0 0 20px 0 rgba(0,0,0,0.16);
         display: flex;
-        margin: 0 0 4.5em;
-        padding: 2em 4.5em;
+        left: 0;
+        padding: 2em 0;
+        position: fixed;
+        right: 0;
         text-align: left;
+        top: 0;
         width: 100%;
+        z-index: 2;
+    }
+
+    .create-form .row {
+        align-items: flex-end;
     }
 
     .create-form .primary {
         font-size: 1.5em;
         font-weight: 700;
-        max-width: 10em;
+        max-width: 8em;
         padding: 0.75rem 1rem;
     }
 
     .field {
         text-align: left;
         padding: 0 0.5em;
-        width: calc(50% - 80px);
+        width: calc(50% - 6em);
     }
 
     .field label {
@@ -93,6 +103,10 @@
         line-height: 1;
         padding: calc(1em - 1px);
         width: 100%;
+    }
+
+    .styled-input:focus {
+        box-shadow: 0 2px 2px 0 rgba(20,0,0,0.16), 0 0 0 1px rgba(20,0,0,0.08);
     }
 
     .toggle-form {
