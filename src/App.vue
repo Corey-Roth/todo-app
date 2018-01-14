@@ -42,13 +42,36 @@ export default {
 </script>
 
 <style>
-#app {
+html {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #EFEFEF;
+  color: #2e2e2f;
   font-family: 'myriad-pro','Myriad Pro',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  font-family: 'myriad-pro','Myriad Pro',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+
+#app {
+  background: #FFFFFF;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.16);
+  margin: 0 auto;
+  max-width: 80em;
+  min-height: 100vh;
+  padding: 4.5em;
   text-align: center;
-  color: #2e2e2f;
-  margin-top: 4em;
 }
 </style>
