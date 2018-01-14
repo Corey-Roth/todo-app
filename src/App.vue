@@ -175,7 +175,6 @@
         }
         #app {
             box-shadow: 0 0 0 0;
-            padding: 1em 0 0;
         }
     }
 </style>

@@ -275,5 +275,29 @@
             margin: 0 0 0.5rem;
             width: 100%;
         }
+
+        .list .card {
+            display: block;
+        }
+
+        .list .content {
+            width: 100%;
+        }
+
+        .list .edit {
+            position: absolute;
+            right: 0.5rem;
+            top: 0.5rem;
+        }
+
+        .list .primary, .list .secondary, .list .completed {
+            display: inline-block;
+            max-width: calc(66.66% - 1em);
+        }
+
+        .list .secondary {
+            max-width: 33.33%;
+            padding: 1em;
+        }
     }
 </style>

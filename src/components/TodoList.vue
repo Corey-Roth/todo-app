@@ -83,6 +83,7 @@
     @media screen and (max-width: 840px) {
         .row {
             display: block;
+            padding: 0 2em;
         }
     }
 </style>

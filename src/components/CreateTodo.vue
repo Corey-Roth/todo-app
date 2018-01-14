@@ -84,4 +84,20 @@
         padding: 1em;
         width: 100%;
     }
+
+    @media screen and (max-width: 767px) {
+        .create-form {
+            display: block;
+        }
+
+        .create-form .primary {
+            margin: 0;
+        }
+
+        .field {
+            margin-bottom: 2em;
+            padding: 0;
+            width: 100%;
+        }
+    }
 </style>
