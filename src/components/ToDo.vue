@@ -1,44 +1,51 @@
 <template>
     <div class="ui card">
-        <div class="content" v-show="!isEditing">
-            <div class="header">
-                {{ todo.title }}
-            </div>
-            <div class="meta">
-                {{ todo.description }}
-            </div>
-            <div class="extra content">
-                <span class="right floated edit icon" v-on:click="showForm">
-                    <i class="edit icon">Edit</i>
-                </span>
-                <span class="right floated trash icon" v-on:click="deleteTodo(todo)">
-                    <i class="trash icon">Delete</i>
-                </span>
-            </div>
-        </div>
-        <div class="content" v-show="isEditing">
-            <div class="ui form">
-                <div class="field">
-                    <label>Title</label>
-                    <input type="text" v-model="todo.title" >
+
+        <transition name="fade" mode="out-in">
+            <div class="content" v-if="!isEditing" key="saved">
+                <div class="header">
+                    {{ todo.title }}
+                    <span class="right floated edit icon" v-on:click="showForm">
+                        <i class="edit icon"><img src="../assets/edit.svg"/></i>
+                    </span>
                 </div>
-                <div class="field">
-                    <label>Project</label>
-                    <input type="text" v-model="todo.description" >
-                </div>
-                <div class="ui two button attached buttons">
-                    <button class="ui basic blue button" v-on:click="hideForm">
-                    Close X
-                    </button>
+                <div class="meta">
+                    {{ todo.description }}
                 </div>
             </div>
-        </div>
-        <div class="completed" v-show="!isEditing && todo.done" disabled>
-            Completed
-        </div>
-        <div class="primary" v-on:click="completeTodo(todo)" v-show="!isEditing && !todo.done">
-            Complete this task
-        </div>
+
+            <div class="content" v-if="isEditing" key="edited">
+                <div class="form stacked">
+                    <div class="field">
+                        <label>Title</label>
+                        <input type="text" v-model="todo.title" class="styled-input dark">
+                    </div>
+                    <div class="field">
+                        <label>Project</label>
+                        <input type="text" v-model="todo.description" class="styled-input dark">
+                    </div>
+                    <div class="ui two button attached buttons">
+                        <button class="primary" v-on:click="hideForm">
+                        Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </transition>
+
+        <transition name="fade" mode="out-in">
+            <div class="completed" v-if="!isEditing && todo.done" disabled>
+                Completed
+            </div>
+            <div class="primary" v-on:click="completeTodo(todo)" v-if="!isEditing && !todo.done">
+                Complete this task
+            </div>
+        </transition>
+        <transition name="fade" mode="out-in">
+            <div class="secondary" v-on:click="deleteTodo(todo)" v-show="!isEditing">
+                Delete
+            </div>
+        </transition>
     </div>
 </template>
 
@@ -75,6 +82,7 @@
         display: inline-block;
         margin: 0.5em;
         padding: 2em;
+        position: relative;
         text-align: left;
         width: calc(25% - 1rem);
     }
@@ -104,6 +112,19 @@
         transform: translatey(1px);
     }
 
+    .secondary {
+        color: #777777;
+        cursor: pointer;
+        line-height: 1;
+        padding: 1em 2em 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .secondary:hover {
+        color: #000000;
+    }
+
     .completed {
         background: #ebebeb;
         border: 0 none;
@@ -128,10 +149,59 @@
     }
 
     .header {
+        display: flex;
+        justify-content: space-between;
         font-size: 2em;
         font-weight: 300;
         line-height: 90%;
         margin-bottom: 0.5rem;
+    }
+
+    .edit {
+        cursor: pointer;
+        opacity: 0.66;
+        position: relative;
+        right: -0.5rem;
+        top: -0.5rem;
+    }
+
+    .edit:hover {
+        opacity: 1;
+    }
+
+    .edit img {
+        width: 1.5rem;
+    }
+
+    .dark {
+        background: #ebebeb;
+        margin-bottom: 1.5em;
+        padding: 0.5em 1em;
+    }
+
+    .stacked {
+        display: block;
+        margin-bottom: -1em;
+        margin-left: -1em;
+        margin-right: -1em;
+        margin-top: -1em;
+    }
+
+    .stacked .primary {
+        margin-bottom: 0;
+    }
+
+    .stacked .field {
+        padding: 0;
+        width: 100%;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+      transition: opacity 100ms ease-out;
+    }
+
+    .fade-enter, .fade-leave-to {
+      opacity: 0;
     }
 
     @media screen and (max-width: 1024px) {

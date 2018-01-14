@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <style>
+      .\32 0792cf8-368e-4b6e-8b6f-22218c4f024e {
+        fill: #333;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <title>edit</title>
+  <g id="8426ea56-66e1-45e6-9a58-1a5b152e7000" data-name="Layer 2">
+    <g id="083a5329-487f-47cf-a297-2606f6cb9d4b" data-name="Layer 1">
+      <g id="26f2b3b8-d090-421d-ac5d-7c9fe7877cd7" data-name="edit">
+        <g id="712efa77-b39f-4976-9d07-9f55ae9376f3" data-name="edit">
+          <g id="14e51aac-71de-4a7e-944d-4921060c9dce" data-name="field">
+            <polygon class="20792cf8-368e-4b6e-8b6f-22218c4f024e" points="25 18 25 30 2 30 2 7 14 7 13.9 5 0 5 0 32 25 32 27 32 27 18 25 18"/>
+          </g>
+          <g id="9568c322-29f6-4ef7-a1a2-b455d72a2b24" data-name="pencil">
+            <path class="20792cf8-368e-4b6e-8b6f-22218c4f024e" d="M31.4,2.2,29.8.6a2.7,2.7,0,0,0-3.4,0L24.8,2.2l5,5,1.6-1.6A2.7,2.7,0,0,0,31.4,2.2ZM15,12l5,5,8-8L23,4Zm-4,9,7-2-5-5Z"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
