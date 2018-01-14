@@ -69,12 +69,13 @@
 
 <style>
     .card {
+        background: #FFFFFF;
         border-radius: 0.25em;
         box-shadow: 0 2px 2px 0 rgba(20,0,0,0.16), 0 0 0 1px rgba(20,0,0,0.08);
         display: inline-block;
-        margin: 0 1em;
+        margin: 0 0.5em;
         padding: 2em;
-        width: 25%;
+        width: calc(25% - 1rem);
     }
 
     .card:hover {
@@ -115,6 +116,11 @@
         width: 100%;
     }
 
+    .active, .completed {
+        margin: 0 auto;
+        max-width: 20em;
+    }
+
     .content {
         margin-bottom: 1em;
     }
@@ -124,5 +130,20 @@
         font-weight: 300;
         line-height: 90%;
         margin-bottom: 0.5rem;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .card {
+            margin: 0 0.5rem 1rem;
+            width: calc(50% - 1rem);
+        }
+    }
+
+    @media screen and (max-width: 840px) {
+        .card {
+            border-radius: 0;
+            margin: 0 0 0.5rem;
+            width: 100%;
+        }
     }
 </style>

@@ -53,9 +53,10 @@
 
 <style>
     html {
-      margin: 0;
-      padding: 0;
+        margin: 0;
+        padding: 0;
     }
+
     body {
       background: #EFEFEF;
       color: #2e2e2f;
@@ -64,6 +65,7 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       margin: 0;
+      overflow-y: auto;
       padding: 0;
     }
 
@@ -83,6 +85,7 @@
       min-height: 100vh;
       padding: 4.5em;
       text-align: center;
+      width: 100%;
     }
 
     .swal-modal {
@@ -125,7 +128,7 @@
         right: -8px;
     }
 
-    .swal-button {
+    .swal-button, .swal-button:focus {
         background: #e41f35;
         border: 0 none;
         border-radius: 0.25em;
@@ -135,11 +138,12 @@
         display: block;
         font-size: 1rem;
         line-height: 1;
+        outline: 0;
         padding: 1em 2em;
         width: 100%;
     }
 
-    .swal-button:hover {
+    .swal-button:hover, .swal-button:active {
         background: #8B0000;
         box-shadow: 0 0 0 0;
         transform: translateY(1px);
@@ -148,5 +152,15 @@
     .swal-button-container {
         display: block;
         margin: 0;
+    }
+
+    @media screen and (max-width: 840px) {
+        body {
+            background: #FFFFFF;
+        }
+        #app {
+            box-shadow: 0 0 0 0;
+            padding: 1em 0 0;
+        }
     }
 </style>

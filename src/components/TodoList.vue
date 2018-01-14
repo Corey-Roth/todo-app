@@ -41,5 +41,13 @@
 <style>
     .row {
         display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    @media screen and (max-width: 840px) {
+        .row {
+            display: block;
+        }
     }
 </style>
