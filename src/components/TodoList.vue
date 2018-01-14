@@ -1,12 +1,17 @@
 <template>
-    <div class="row">
-        <todo
-            v-on:delete-todo="deleteTodo"
-            v-on:complete-todo="completeTodo"
-            v-for="todo in todos"
-            :key="todo.id"
-            :todo.sync="todo">
-        </todo>
+    <div class="todo-list">
+        <div class="row">
+            <button v-on:click="toggleView" class="toggle">List view</button>
+        </div>
+        <div class="row" v-bind:class="{ list: isList }">
+            <todo
+                v-on:delete-todo="deleteTodo"
+                v-on:complete-todo="completeTodo"
+                v-for="todo in todos"
+                :key="todo.id"
+                :todo.sync="todo">
+            </todo>
+        </div>
     </div>
 </template>
 
@@ -19,6 +24,13 @@
       components: {
         Todo,
       },
+
+      data() {
+        return {
+            isList: false,
+        };
+      },
+
       methods: {
         deleteTodo(todo) {
           sweetalert({
@@ -41,6 +53,9 @@
           this.todos[todoIndex].done = true;
           sweetalert('Success!', 'To-Do completed!', 'success');
         },
+        toggleView: function () {
+            this.isList = !this.isList;
+        },
       },
     };
 </script>
@@ -51,6 +66,18 @@
         flex-wrap: wrap;
         padding: 0 4.5em;
         width: 100%;
+    }
+
+    .toggle {
+        background: none;
+        border: 0 none;
+        cursor: pointer;
+        margin: 1em 0;
+        font-size: 1em;
+    }
+
+    .toggle:hover {
+        color: #e41f35;
     }
 
     @media screen and (max-width: 840px) {

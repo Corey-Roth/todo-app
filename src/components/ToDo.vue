@@ -14,7 +14,7 @@
                 </div>
             </div>
 
-            <div class="content" v-if="isEditing" key="edited">
+            <div class="content horz" v-if="isEditing" key="edited">
                 <div class="form stacked">
                     <div class="field">
                         <label>Title</label>
@@ -85,6 +85,44 @@
         position: relative;
         text-align: left;
         width: calc(25% - 1rem);
+    }
+
+    .list {
+        display: block;
+        padding: 0;
+    }
+
+    .list .card {
+        align-items: center;
+        border-radius: 0;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0.25em 0;
+        width: 100%;
+    }
+
+    .list .content {
+        width: calc(100% - 12em);
+    }
+
+    .list .primary, .list .secondary, .list .completed {
+        max-width: 12em;
+    }
+
+    .list .secondary {
+        display: inline-block;
+        max-width: none;
+        padding: 1em 0;
+        text-align: left;
+    }
+
+    .list .edit {
+        margin-left: 0.5rem;
+        position: static;
+    }
+
+    .list .header {
+        justify-content: flex-start;
     }
 
     .card:hover {
@@ -177,6 +215,26 @@
         background: #ebebeb;
         margin-bottom: 1.5em;
         padding: 0.5em 1em;
+    }
+
+    .list .stacked {
+        align-items: flex-end;
+        display: flex;
+        margin: 0;
+    }
+
+    .list .stacked .field {
+        padding: 0 0.5em;
+        width: 50%;
+    }
+
+    .list .dark {
+        margin-bottom: 0;
+        padding: 1em;
+    }
+
+    .list .horz {
+        width: 100%;
     }
 
     .stacked {
