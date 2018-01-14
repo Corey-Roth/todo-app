@@ -120,6 +120,7 @@
     .primary, .completed {
         margin: 0 auto;
         max-width: 20em;
+        text-align: center;
     }
 
     .content {

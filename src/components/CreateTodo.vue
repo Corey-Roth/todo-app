@@ -46,7 +46,9 @@
 <style>
     .create-form {
         align-items: flex-end;
-        background: #CCCCCC;
+        background: #ebebeb;
+        border-bottom: 1px solid #CCCCCC;
+        //border-top: 1px solid #CCCCCC;
         display: flex;
         margin: 0 0 4.5em;
         padding: 2em;
@@ -54,7 +56,10 @@
     }
 
     .create-form .primary {
+        font-size: 1.5em;
+        font-weight: 700;
         max-width: 10em;
+        padding: 0.75rem 1rem;
     }
 
     .field {
