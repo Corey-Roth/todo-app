@@ -1,93 +1,45 @@
 <template>
-
-	<div class="row">
-		<div class='ui centered card' v-for="todo in todos">
-			<div class='content'>
-				<div class='header'>
-					{{ todo.title }}
-				</div>
-				<div class='meta'>
-					{{ todo.project }}
-				</div>
-				<div class='extra content'>
-					<span class='right floated edit icon'>
-						<i class='edit icon'></i>
-					</span>
-				</div>
-			</div>
-			<button class='completed' v-show="todo.done">
-				Completed
-			</button>
-			<button class='active' v-show="!todo.done">
-				Complete
-			</button>
-		</div>
-	</div>
+    <div class="row">
+        <todo v-on:delete-todo="deleteTodo" v-on:complete-todo="completeTodo" v-for="todo in todos" :todo.sync="todo"></todo>
+    </div>
 </template>
 
-<script type="text/javascript">
-	export default {
-		props: ['todos'],
-	};
+<script type = "text/javascript" >
+    import sweetalert from 'sweetalert';
+    import Todo from './Todo';
+    export default {
+      props: ['todos'],
+      components: {
+        Todo,
+      },
+      methods: {
+        deleteTodo(todo) {
+          sweetalert({
+            title: 'Are you sure?',
+            text: 'This To-Do will be permanently deleted!',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#DD6B55',
+            confirmButtonText: 'Yes, delete it!',
+            closeOnConfirm: false,
+          },
+          () => {
+            const todoIndex = this.todos.indexOf(todo);
+            this.todos.splice(todoIndex, 1);
+            sweetalert('Deleted!', 'Your To-Do has been deleted.', 'success');
+          });
+        },
+        completeTodo(todo) {
+          const todoIndex = this.todos.indexOf(todo);
+          this.todos[todoIndex].done = true;
+          sweetalert('Success!', 'To-Do completed!', 'success');
+        },
+      },
+    };
 </script>
 
 <style>
-
-	.row {
-		align-content: space-around;
-		display: flex;
-	}
-
-	.ui.card {
-		border-radius: 0.25em;
-		box-shadow: 0 2px 2px 0 rgba(20,0,0,0.16), 0 0 0 1px rgba(20,0,0,0.08);
-		display: inline-block;
-		margin: 0 1em;
-		padding: 2em;
-		width: 25%;
-	}
-
-	.active {
-		background: #e41f35;
-		border: 0 none;
-		border-radius: 0.25em;
-		box-shadow: 0 2px 2px 0 rgba(20,0,0,0.16), 0 0 0 1px rgba(20,0,0,0.08);
-		color: #FFFFFF;
-		cursor: pointer;
-		display: block;
-		font-size: 1em;
-		line-height: 1;
-		padding: 1em 2em;
-		width: 100%;
-
-	}
-
-	.active:hover {
-		background: #8B0000;
-		transform: translatey(1px);
-	}
-
-	.completed {
-		background: #ebebeb;
-		border: 0 none;
-		border-radius: 0.25em;
-		color: #777777;
-		cursor: not-allowed;
-		display: block;
-		font-size: 1em;
-		line-height: 1;
-		padding: 1em 2em;
-		width: 100%;
-	}
-
-	.content {
-		margin-bottom: 1em;
-	}
-
-	.header {
-		font-size: 2em;
-		font-weight: 300;
-		line-height: 90%;
-		margin-bottom: 0.5rem;
-	}
+    .row {
+        display: flex;
+    }
 </style>
