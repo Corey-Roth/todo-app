@@ -1,31 +1,17 @@
 <template>
-  <div class="ui basic content center aligned segment">
-    <button class="ui basic button icon" v-on:click="openForm" v-show="!isCreating">
-      <i class="plus icon"></i>
-    </button>
-    <div class="ui centered card" v-show="isCreating">
-      <div class="content">
-        <div class="ui form">
-          <div class="field">
+    <div class="create-form">
+        <div class="field">
             <label>Title</label>
-            <input v-model="titleText" type="text">
-          </div>
-          <div class="field">
-            <label>Project</label>
-            <input v-model="projectText" type="text">
-          </div>
-          <div class="ui two button attached buttons">
-            <button class="ui basic blue button" v-on:click="sendForm()">
-              Create
-            </button>
-            <button class="ui basic red button" v-on:click="closeForm">
-              Cancel
-            </button>
-          </div>
+            <input v-model="titleText" type="text" class="styled-input">
         </div>
-      </div>
+        <div class="field">
+            <label>Description</label>
+            <input v-model="descriptionText" type="text" class="styled-input">
+        </div>
+        <button class="primary" v-on:click="sendForm()">
+            Create
+        </button>
     </div>
-  </div>
 </template>
 
 <script>
@@ -33,31 +19,64 @@
     data() {
       return {
         titleText: '',
-        projectText: '',
+        descriptionText: '',
         isCreating: false,
       };
     },
     methods: {
-      openForm() {
-        this.isCreating = true;
-      },
-      closeForm() {
-        this.isCreating = false;
-      },
       sendForm() {
-        if (this.titleText.length > 0 && this.projectText.length > 0) {
+        if (this.titleText.length > 0 && this.descriptionText.length > 0) {
           const title = this.titleText;
-          const project = this.projectText;
+          const description = this.descriptionText;
           this.$emit('create-todo', {
             title,
-            project,
+            description,
             done: false,
+            id: this._uid,
           });
           this.titleText = '';
-          this.projectText = '';
+          this.descriptionText = '';
           this.isCreating = false;
         }
       },
     },
   };
 </script>
+
+<style>
+    .create-form {
+        align-items: flex-end;
+        background: #CCCCCC;
+        display: flex;
+        margin: 0 0 4.5em;
+        padding: 2em;
+        width: 100%;
+    }
+
+    .create-form .primary {
+        max-width: 10em;
+    }
+
+    .field {
+        text-align: left;
+        padding: 0 0.5em;
+        width: calc(50% - 80px);
+    }
+
+    .field label {
+        color: #333333;
+        display: block;
+        font-weight: 700;
+        font-size: 1.125em;
+        margin-bottom: 0.5em
+    }
+
+    .styled-input {
+        border: 0 none;
+        border-radius: 0.25em;
+        font-size: 1em;
+        line-height: 1;
+        padding: 1em;
+        width: 100%;
+    }
+</style>

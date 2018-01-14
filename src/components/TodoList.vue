@@ -1,12 +1,19 @@
 <template>
     <div class="row">
-        <todo v-on:delete-todo="deleteTodo" v-on:complete-todo="completeTodo" v-for="todo in todos" :todo.sync="todo"></todo>
+        <todo
+            v-on:delete-todo="deleteTodo"
+            v-on:complete-todo="completeTodo"
+            v-for="todo in todos"
+            :key="todo.id"
+            :todo.sync="todo">
+        </todo>
     </div>
 </template>
 
 <script type = "text/javascript" >
     import sweetalert from 'sweetalert';
-    import Todo from './Todo';
+    import Todo from './ToDo';
+
     export default {
       props: ['todos'],
       components: {
@@ -42,6 +49,7 @@
     .row {
         display: flex;
         flex-wrap: wrap;
+        padding: 0 4.5em;
         width: 100%;
     }
 

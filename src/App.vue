@@ -2,8 +2,8 @@
     <div id="app">
         <template>
             <div>
-                <todo-list v-bind:todos="todos"></todo-list>
                 <create-todo v-on:create-todo="createTodo"></create-todo>
+                <todo-list v-bind:todos="todos"></todo-list>
             </div>
         </template>
     </div>
@@ -21,33 +21,37 @@
         CreateTodo,
       },
       // data function avails data to the template
-      data() {
+    data() {
         return {
-          todos: [{
-            title: 'Todo A',
-            project: 'Project A',
-            done: false,
-          }, {
-            title: 'Todo B',
-            project: 'Project B',
-            done: true,
-          }, {
-            title: 'Todo C',
-            project: 'Project C',
-            done: false,
-          }, {
-            title: 'Todo D',
-            project: 'Project D',
-            done: false,
-          }],
+            todos: [{
+                title: 'Todo A',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tellus ligula, cursus amet.',
+                done: false,
+                id: 1,
+            }, {
+                title: 'Todo B',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tellus ligula, cursus amet.',
+                done: true,
+                id: 2,
+            }, {
+                title: 'Todo C',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tellus ligula, cursus amet.',
+                done: false,
+                id: 3,
+            }, {
+                title: 'Todo D',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tellus ligula, cursus amet.',
+                done: false,
+                id: 4,
+            }],
         };
-      },
-
-      methods: {
+    },
+    methods: {
         createTodo(newTodo) {
             this.todos.push(newTodo);
+            sweetalert('Success!', 'To-Do created!', 'success');
         },
-      },
+    },
 };
 </script>
 
@@ -83,7 +87,7 @@
       margin: 0 auto;
       max-width: 80em;
       min-height: 100vh;
-      padding: 4.5em;
+      padding: 0;
       text-align: center;
       width: 100%;
     }
