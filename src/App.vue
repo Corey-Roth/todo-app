@@ -24,25 +24,10 @@
     data() {
         return {
             todos: [{
-                title: 'Todo A',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tellus ligula, cursus amet.',
+                title: 'Sample task',
+                description: 'This is a sample task. Create a new task, or delete this one to get started',
                 done: false,
                 id: 1,
-            }, {
-                title: 'Todo B',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tellus ligula, cursus amet.',
-                done: true,
-                id: 2,
-            }, {
-                title: 'Todo C',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tellus ligula, cursus amet.',
-                done: false,
-                id: 3,
-            }, {
-                title: 'Todo D',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tellus ligula, cursus amet.',
-                done: false,
-                id: 4,
             }],
         };
 

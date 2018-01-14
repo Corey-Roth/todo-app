@@ -55,7 +55,7 @@
           this.todos[todoIndex].done = true;
           sweetalert('Success!', 'To-Do completed!', 'success');
         },
-        toggleView: function () {
+        toggleView() {
             this.isList = !this.isList;
         },
       },
