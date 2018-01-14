@@ -66,6 +66,8 @@
     .row {
         display: flex;
         flex-wrap: wrap;
+        margin: 0 auto;
+        max-width: 80em;
         padding: 0 4.5em;
         width: 100%;
     }

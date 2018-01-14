@@ -98,7 +98,7 @@
         display: flex;
         flex-wrap: wrap;
         margin: 0.25em 0;
-        padding: 1.5em 4.5em 0;
+        padding: 1.5em 4.5em;
         width: 100%;
     }
 
@@ -114,7 +114,7 @@
     .list .secondary {
         display: inline-block;
         max-width: none;
-        padding: 1em 0;
+        padding: 1em 0 0;
         text-align: left;
         width: calc(100% - 12em);
     }

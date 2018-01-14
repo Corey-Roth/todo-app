@@ -55,9 +55,8 @@
 <style>
     .create-form {
         align-items: flex-end;
-        background: #ebebeb;
-        border-bottom: 1px solid #CCCCCC;
-        //border-top: 1px solid #CCCCCC;
+        background: #ffffff;
+        box-shadow: 0 0 20px 0 rgba(0,0,0,0.16);
         display: flex;
         margin: 0 0 4.5em;
         padding: 2em 4.5em;
@@ -87,11 +86,12 @@
     }
 
     .styled-input {
-        border: 0 none;
+        background: #FFFFFF;
+        border: 1px solid #CCCCCC;
         border-radius: 0.25em;
         font-size: 1em;
         line-height: 1;
-        padding: 1em;
+        padding: calc(1em - 1px);
         width: 100%;
     }
 

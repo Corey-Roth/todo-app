@@ -48,7 +48,7 @@
     }
 
     body {
-      background: #EFEFEF;
+      background: #f2f2f2;
       color: #2e2e2f;
       font-family: 'myriad-pro','Myriad Pro',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
       font-size: 16px;
@@ -78,11 +78,7 @@
     }
 
     #app {
-      background: #FFFFFF;
-      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.16);
       margin: 0 auto;
-      max-width: 80em;
-      min-height: 100vh;
       padding: 0 0 4.5em;
       text-align: center;
       width: 100%;
