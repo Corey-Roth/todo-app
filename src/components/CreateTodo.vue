@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
   export default {
     data() {
       return {
@@ -30,6 +32,14 @@
         isCreating: false,
         isActive: false,
       };
+    },
+    computed: {
+        theCount () {
+            return this.$store.state.listCount
+        },
+        ...mapState([
+            'store',
+        ]),
     },
     methods: {
       sendForm() {
@@ -45,6 +55,7 @@
           this.titleText = '';
           this.descriptionText = '';
           this.isCreating = false;
+          this.$store.commit('increment');
         }
       },
         toggleForm() {

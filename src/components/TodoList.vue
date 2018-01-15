@@ -2,8 +2,15 @@
     <div class="todo-list">
         <div class="row button-row">
             <h1>Corey's to-do list</h1>
-            <button v-on:click="toggleView" class="toggle" v-bind:class="{ list: isList }"><img src="../assets/list-view.svg"/></button>
-            <button v-on:click="toggleView" class="toggle" v-bind:class="{ list: !isList }"><img src="../assets/grid-view.svg"/></button>
+            <button v-on:click="toggleView" class="toggle" v-bind:class="{ list: isList }">
+                <img src="../assets/list-view.svg"/>
+            </button>
+            <button v-on:click="toggleView" class="toggle" v-bind:class="{ list: !isList }">
+                <img src="../assets/grid-view.svg"/>
+            </button>
+        </div>
+        <div class="row" v-bind:class="{ list: isList }">
+            <p>Get started by adding a task.</p>
         </div>
         <div class="row" v-bind:class="{ list: isList }">
             <todo
@@ -19,6 +26,7 @@
 
 <script type = "text/javascript" >
     import sweetalert from 'sweetalert';
+    import { mapState } from 'vuex';
     import Todo from './ToDo';
 
     export default {
@@ -32,7 +40,14 @@
             isList: false,
         };
       },
-
+        computed: {
+            theCount () {
+                return this.$store.state.listCount
+            },
+            ...mapState([
+                'store',
+            ]),
+        },
       methods: {
         deleteTodo(todo) {
           sweetalert({

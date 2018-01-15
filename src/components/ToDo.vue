@@ -132,62 +132,6 @@
         box-shadow: 0 4px 4px 0 rgba(20,0,0,0.16), 0 0 0 1px rgba(20,0,0,0.08);
     }
 
-    .primary {
-        background: #e41f35;
-        border: 0 none;
-        border-radius: 0.25em;
-        box-shadow: 0 2px 2px 0 rgba(20,0,0,0.16), 0 0 0 1px rgba(20,0,0,0.08);
-        color: #FFFFFF;
-        cursor: pointer;
-        display: block;
-        font-size: 1em;
-        line-height: 1;
-        padding: 1em 2em;
-        width: 100%;
-
-    }
-
-    .primary:hover {
-        background: #8B0000;
-        box-shadow: 0 0 0 0;
-        transform: translatey(1px);
-    }
-
-    .secondary {
-        background: none;
-        border: 0 none;
-        color: #777777;
-        cursor: pointer;
-        font-size: 1em;
-        line-height: 1;
-        padding: 1em 2em 0;
-        width: 100%;
-        text-align: center;
-    }
-
-    .secondary:hover {
-        color: #000000;
-    }
-
-    .completed {
-        background: #ebebeb;
-        border: 0 none;
-        border-radius: 0.25em;
-        color: #777777;
-        cursor: not-allowed;
-        display: block;
-        font-size: 1em;
-        line-height: 1;
-        padding: 1em 2em;
-        width: 100%;
-    }
-
-    .primary, .completed {
-        margin: 0 auto;
-        max-width: 20em;
-        text-align: center;
-    }
-
     .content {
         margin-bottom: 1em;
     }
