@@ -150,7 +150,7 @@
         margin: 0;
     }
 
-    @media screen and (max-width: 840px) {
+    @media screen and (max-width: 767px) {
         #app {
             box-shadow: 0 0 0 0;
             padding: 2em 0 0;
@@ -158,6 +158,12 @@
 
         h1 {
             font-size: 2em;
+        }
+    }
+
+    @media screen and (max-width: 540px) {
+        h1 {
+            font-size: 1.5em;
         }
     }
 </style>

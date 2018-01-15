@@ -106,7 +106,13 @@
         margin-bottom: 1em;
     }
 
-    @media screen and (max-width: 840px) {
+    @media screen and (max-width: 991px) {
+        .row {
+            padding: 0 2em;
+        }
+    }
+
+    @media screen and (max-width: 767px) {
         .row {
             display: block;
             padding: 0 1em;

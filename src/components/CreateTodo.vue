@@ -152,7 +152,7 @@
         display: none;
     }
 
-    @media screen and (max-width: 840px) {
+    @media screen and (max-width: 767px) {
         .create-form {
             background: #ffffff;
             bottom: 0;

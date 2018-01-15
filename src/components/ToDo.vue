@@ -275,7 +275,13 @@
         }
     }
 
-    @media screen and (max-width: 840px) {
+    @media screen and (max-width: 991px) {
+        .list .card {
+            padding: 1.5em 2em;
+        }
+    }
+
+    @media screen and (max-width: 767px) {
         .card {
             border-radius: 0.25em;
             margin: 0 0 0.5rem;
@@ -285,6 +291,19 @@
         .list .card {
             display: block;
             padding: 1.5em 1em;
+        }
+
+        .list .stacked {
+            display: block;
+        }
+
+        .list .stacked .field {
+            padding: 0;
+            width: 100%;
+        }
+
+        .list .two .primary {
+            max-width: 100%;
         }
 
         .list .content {
@@ -306,6 +325,12 @@
 
         .list .secondary {
             max-width: 25%;
+        }
+    }
+
+    @media screen and (max-width: 540px) {
+        .card .header {
+            font-size: 1.5em;
         }
     }
 </style>
