@@ -14,6 +14,7 @@
     import { mapState } from 'vuex';
     import TodoList from './components/TodoList';
     import CreateTodo from './components/CreateTodo';
+    import store from './main'
 
     export default {
         name: 'app',
