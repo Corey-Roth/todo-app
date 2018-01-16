@@ -1,6 +1,5 @@
 <template>
-    <div class="ui card">
-
+    <div class="ui card" v-if="todo.title.length > 0">
         <transition name="fade" mode="out-in">
             <div class="content" v-if="!isEditing" key="saved">
                 <div class="header">

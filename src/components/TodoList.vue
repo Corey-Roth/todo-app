@@ -9,7 +9,7 @@
                 <img src="../assets/grid-view.svg"/>
             </button>
         </div>
-        <div class="row" v-bind:class="{ list: isList }">
+        <div class="row empty-row" v-if="todos.length < 2">
             <p>Get started by adding a task.</p>
         </div>
         <div class="row" v-bind:class="{ list: isList }">
@@ -116,9 +116,26 @@
 
     .row.button-row {
         align-items: center;
+        background: #f2f2f2;
+        border-bottom: 1px solid #CCCCCC;
+        box-shadow: 0 1em 1em -1.5em rgba(0, 0, 0, 0.33);
         display: flex;
         justify-content: space-between;
         margin-bottom: 1em;
+        padding-bottom: 1em;
+    }
+
+    .empty-row {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        min-height: 25vh;
+    }
+
+    .empty-row p {
+        color: #999999;
+        font-size: 1.5em;
+        font-weight: 400;
     }
 
     @media screen and (max-width: 991px) {

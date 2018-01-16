@@ -5,13 +5,13 @@
                     <h2 class='mobile-only'>Add a new task</h2>
                     <div class="field">
                         <label>Title</label>
-                        <input v-model="titleText" type="text" class="styled-input">
+                        <input v-model="titleText" type="text" class="styled-input" tabindex="1">
                     </div>
                     <div class="field">
                         <label>Description</label>
-                        <input v-model="descriptionText" type="text" class="styled-input">
+                        <input v-model="descriptionText" type="text" class="styled-input" tabindex="2">
                     </div>
-                    <button class="primary" v-on:click="sendForm()">
+                    <button class="primary" v-on:click="sendForm()" tabindex="3">
                         Create
                     </button>
                     <button class="secondary mobile-only" v-on:click="toggleForm">Cancel</button>
@@ -55,7 +55,6 @@ import { mapState } from 'vuex';
           this.titleText = '';
           this.descriptionText = '';
           this.isCreating = false;
-          this.$store.commit('increment');
         }
       },
         toggleForm() {
