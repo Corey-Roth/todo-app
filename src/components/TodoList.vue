@@ -52,20 +52,8 @@
         },
       methods: {
         deleteTodo(todo) {
-          sweetalert({
-            title: 'Are you sure?',
-            text: 'This To-Do will be permanently deleted!',
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#DD6B55',
-            confirmButtonText: 'Yes, delete it!',
-            closeOnConfirm: false,
-          },
-          () => {
             const todoIndex = this.todos.indexOf(todo);
-            this.todos.splice(todoIndex, 1);
-            sweetalert('Deleted!', 'Your To-Do has been deleted.', 'success');
-          });
+            this.todos.splice(todoIndex);
         },
         completeTodo(todo) {
           const todoIndex = this.todos.indexOf(todo);
