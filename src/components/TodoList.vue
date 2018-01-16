@@ -12,15 +12,17 @@
         <div class="row empty-row" v-if="todos.length < 2">
             <p>Get started by adding a task.</p>
         </div>
-        <div class="row" v-bind:class="{ list: isList }">
-            <todo
-                v-on:delete-todo="deleteTodo"
-                v-on:complete-todo="completeTodo"
-                v-for="todo in todos"
-                :key="todo.id"
-                :todo.sync="todo">
-            </todo>
-        </div>
+        <transition fade mode="out-in">
+            <div class="row" v-bind:class="{ list: isList }">
+                <todo
+                    v-on:delete-todo="deleteTodo"
+                    v-on:complete-todo="completeTodo"
+                    v-for="todo in todos"
+                    :key="todo.id"
+                    :todo.sync="todo">
+                </todo>
+            </div>
+        </transition>
     </div>
 </template>
 
@@ -123,13 +125,14 @@
         justify-content: space-between;
         margin-bottom: 1em;
         padding-bottom: 1em;
+        padding-top: 1em;
     }
 
     .empty-row {
         align-items: center;
         display: flex;
         justify-content: center;
-        min-height: 25vh;
+        min-height: 50vh;
     }
 
     .empty-row p {
@@ -148,6 +151,10 @@
         .row {
             display: block;
             padding: 0 1em;
+        }
+
+        .row.button-row {
+            background: #FFFFFF;
         }
     }
 </style>
