@@ -22,9 +22,11 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+    import { mapMutations } from 'vuex';
 
   export default {
+    name: 'CreateTodo',
+    props: ['todo'],
     data() {
       return {
         titleText: '',
@@ -32,14 +34,6 @@ import { mapState } from 'vuex';
         isCreating: false,
         isActive: false,
       };
-    },
-    computed: {
-        theCount () {
-            return this.$store.state.listCount
-        },
-        ...mapState([
-            'store',
-        ]),
     },
     methods: {
       sendForm() {
@@ -55,12 +49,14 @@ import { mapState } from 'vuex';
           this.titleText = '';
           this.descriptionText = '';
           this.isCreating = false;
-          this.$store.commit('increment');
         }
       },
         toggleForm() {
             this.isActive = !this.isActive;
         },
+        ...mapMutations([
+            'createTodo',
+        ]),
     },
   };
 </script>

@@ -16,9 +16,9 @@
             <todo
                 v-on:delete-todo="deleteTodo"
                 v-on:complete-todo="completeTodo"
-                v-for="todo in todos"
-                :key="todo.id"
-                :todo.sync="todo">
+                v-show="todos.length"
+                :key="todos.id"
+                :todos.sync="todos">
             </todo>
         </div>
     </div>

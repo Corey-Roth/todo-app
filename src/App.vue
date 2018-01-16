@@ -3,7 +3,7 @@
         <template>
             <div>
                 <create-todo v-on:create-todo="createTodo"></create-todo>
-                <todo-list v-bind:todos="todos"></todo-list>
+                <todo-list v-bind:todos="todos.length"></todo-list>
             </div>
         </template>
     </div>
@@ -11,10 +11,10 @@
 
 <script>
     import sweetalert from 'sweetalert';
-    import { mapState } from 'vuex';
+    import { mapMutations } from 'vuex';
     import TodoList from './components/TodoList';
     import CreateTodo from './components/CreateTodo';
-    import store from './main'
+    import store from './main';
 
     export default {
         name: 'app',
@@ -23,23 +23,14 @@
             CreateTodo,
         },
         computed: {
-            ...mapState([
-                'store',
-            ]),
-        },
-      // data function avails data to the template
-        data() {
-            return {
-                todos: [{
-                }],
-            };
-
+            todos () {
+                return this.$store.state.todos
+            },
         },
         methods: {
-            createTodo(newTodo) {
-                this.todos.push(newTodo);
-                sweetalert('Success!', 'To-Do created!', 'success');
-            },
+            ...mapMutations([
+                'createTodo',
+            ]),
         },
     };
 </script>

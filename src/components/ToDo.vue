@@ -51,7 +51,6 @@
 
 <script type="text/javascript">
     export default {
-        props: ['todo'],
         data() {
           return {
             isEditing: false,

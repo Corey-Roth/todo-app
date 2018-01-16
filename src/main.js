@@ -7,12 +7,10 @@ import App from './App';
 
 Vue.use(Vuex);
 
-
-
 /* eslint-disable no-new */
 new Vue({
-    store,
-    el: '#app',
-    template: '<App/>',
-    components: { App },
+  store,
+  el: '#app',
+  template: '<App/>',
+  components: { App },
 });
