@@ -35,6 +35,7 @@
             return {
                 todos: [{
                 }],
+                isOpen: false,
             };
 
         },
@@ -42,6 +43,9 @@
             createTodo(newTodo) {
                 this.todos.push(newTodo);
                 sweetalert('Success!', 'To-Do created!', 'success');
+            },
+            toggleMenu() {
+                this.isOpen = !this.isOpen;
             },
         },
     };
@@ -216,7 +220,7 @@
     @media screen and (max-width: 767px) {
         #app {
             box-shadow: 0 0 0 0;
-            padding: 0;
+            padding: 3em 0 0;
         }
 
         h1 {

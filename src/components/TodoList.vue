@@ -155,7 +155,12 @@
         }
 
         .row.button-row {
-            background: #FFFFFF;
+            max-width: calc(100vw - 2em);
+            padding: 1em 0;
+        }
+
+        .todo-list {
+            padding: 1em 0 0;
         }
     }
 </style>

@@ -1,5 +1,5 @@
 <template>
-	<nav class="left-nav">
+	<nav class="left-nav" v-bind:class="{ open:isOpen }">
 		<div class="actions">
 			<h2 class="active">Projects</h2>
 			<h2>Tags</h2>
@@ -85,5 +85,11 @@
 
 	.actions .active {
 		display: flex;
+	}
+
+	@media (max-width: 767px) {
+		.left-nav {
+			display: none;
+		}
 	}
 </style>

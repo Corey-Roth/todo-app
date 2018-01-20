@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="20" viewBox="0 0 32 20">
+  <defs>
+    <style>
+      .\37 0531255-ac44-4577-81d9-202752b2badb {
+        fill: #333;
+      }
+    </style>
+  </defs>
+  <title>menu</title>
+  <g id="f2e88ae6-8e53-4d66-82aa-4bfeb6a2c6a2" data-name="Layer 2">
+    <g id="f4abb94c-2c8b-4721-9147-db311e374b08" data-name="Layer 1">
+      <g id="409818d0-331c-4ce1-933b-903ca1a9ee0e" data-name="menu">
+        <g id="39212a71-dab8-4c66-9bd7-9d38064e80a7" data-name="menu">
+          <g id="8d38180b-58ff-4e57-8872-1e370305abb4" data-name="Rounded Rectangle 2">
+            <rect class="70531255-ac44-4577-81d9-202752b2badb" y="16" width="32" height="4" rx="1" ry="1"/>
+          </g>
+          <g id="ef4981ff-667d-41f0-9636-819a36b47c42" data-name="Rounded Rectangle 2">
+            <rect class="70531255-ac44-4577-81d9-202752b2badb" y="8" width="32" height="4" rx="1" ry="1"/>
+          </g>
+          <g id="fad64102-ecb2-4002-97c3-c3074cc53a39" data-name="Rounded Rectangle 2">
+            <rect class="70531255-ac44-4577-81d9-202752b2badb" width="32" height="4" rx="1" ry="1"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

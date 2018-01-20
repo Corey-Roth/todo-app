@@ -2,6 +2,7 @@
     <div class="create">
             <div class="action-row">
                 <div class="row">
+                    <button class="toggle-menu mobile-only" v-on:click="openTheMenu()" v-bind:class="{ open:isOpen }"><img src="../assets/menu.svg"/></button>
                     <button class="toggle-form" v-on:click="toggleForm" v-bind:class="{ active: isActive }">+</button>
                 </div>
             </div>
@@ -17,7 +18,7 @@
                             <label>Description</label>
                             <textarea v-model="descriptionText" type="text" class="styled-input" tabindex="2"></textarea>
                         </div>
-                        <div class="field">
+                        <div class="field hidden-mobile">
                             <label>Project</label>
                             <div class="styled-select">
                                 <select v-model="project">
@@ -27,7 +28,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="field">
+                        <div class="field hidden-mobile">
                             <label>Tags</label>
                             <div class="styled-select">
                                 <select v-model="tags">
@@ -58,6 +59,7 @@ import { mapState } from 'vuex';
         tags: '',
         isCreating: false,
         isActive: false,
+        isOpen: false,
       };
     },
     computed: {
@@ -92,6 +94,10 @@ import { mapState } from 'vuex';
       },
         toggleForm() {
             this.isActive = !this.isActive;
+        },
+        openTheMenu() {
+            this.$emit('toggle-menu');
+            this.isOpen = !this.isOpen;
         },
     },
   };
@@ -174,6 +180,7 @@ import { mapState } from 'vuex';
     }
 
     textarea.styled-input {
+        font-family: 'myriad-pro','Myriad Pro',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
         min-height: 8em;
         max-width: 100%;
         min-width: 100%;
@@ -269,26 +276,18 @@ import { mapState } from 'vuex';
         display: block;
     }
 
+    .toggle-menu {
+        background: none;
+        border: 0 none;
+    }
+
     @media screen and (max-width: 767px) {
         .mobile-only {
             display: block;
         }
 
-        .create-form .primary {
-            bottom: 2em;
-            left: 2em;
-            margin: 0;
-            max-width: 100%;
-            position: fixed;
-            width: calc(66vw - 2em);
-        }
-
-        .create-form .secondary {
-            bottom: 2em;
-            padding: 2em 1em;
-            position: fixed;
-            right: 2em;
-            width: calc(33vw - 2em);
+        .create-form h2 {
+            font-size: 1.25em;
         }
 
         .field {
@@ -297,9 +296,37 @@ import { mapState } from 'vuex';
             width: 100%;
         }
 
+        .action-row .row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .create-form {
+            padding-top: 0;
+        }
+
+        .create-form.active {
+            position: fixed;
+            top: 3em;
+        }
+
         .create-form .styled-input {
             border: 1px solid #cccccc;
             background: #ffffff;
+        }
+
+        .create-form-inner {
+            border-radius: 0;
+            box-shadow: 0 0 0 0;
+            padding: 1em 2em;
+        }
+
+        .hidden-mobile {
+            display: none;
+        }
+
+        .toggle-menu {
+            padding: 1em 0;
         }
     }
 </style>
