@@ -37,7 +37,7 @@
             </div>
         </transition>
 
-        <div class="content">
+        <div class="content buttons">
             <transition name="fade" mode="out-in">
                 <div class="completed" v-if="!isEditing && todo.done" disabled>
                     Completed
@@ -101,47 +101,6 @@
 
     .card .content {
         padding: 0 1.5em;
-    }
-
-    .list {
-        display: block;
-        padding: 0;
-    }
-
-    .list .card {
-        align-items: center;
-        border-radius: 0;
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0.25em 0;
-        padding: 1.5em 4.5em;
-        width: 100%;
-    }
-
-    .list .content {
-        margin-bottom: 0;
-        width: calc(100% - 12em);
-    }
-
-    .list .primary, .list .secondary, .list .completed {
-        max-width: 12em;
-    }
-
-    .list .secondary {
-        display: inline-block;
-        max-width: none;
-        padding: 1em 0 0;
-        text-align: left;
-        width: calc(100% - 12em);
-    }
-
-    .list .edit {
-        margin-left: 0.5rem;
-        position: static;
-    }
-
-    .list .header {
-        justify-content: flex-start;
     }
 
     .card:hover {
@@ -266,6 +225,61 @@
 
     .card .secondary {
         padding: 1em;
+    }
+
+    /* List code */
+    .list {
+        display: block;
+        padding: 0;
+    }
+
+    .list .card {
+        align-items: center;
+        border-radius: 0;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0.25em 0;
+        width: 100%;
+    }
+
+    .list .content {
+        margin-bottom: 1em;
+        padding: 0 4.5em;
+        width: calc(100% - 12em);
+    }
+
+    .list .footer {
+        padding: 0.5rem 4.5rem;
+    }
+
+    .list .primary, .list .secondary, .list .completed {
+        max-width: 12em;
+    }
+
+    .list .secondary {
+        display: inline-block;
+        max-width: none;
+        padding: 1em 0 0;
+        text-align: left;
+        width: calc(100% - 12em);
+    }
+
+    .list .edit {
+        margin-left: 0.5rem;
+        position: static;
+    }
+
+    .list .header {
+        justify-content: flex-start;
+    }
+
+    .list .projects {
+        margin-bottom: 0.5em;
+    }
+
+    .list .buttons {
+        padding: 0;
+        width: auto;
     }
 
     @media screen and (max-width: 1024px) {

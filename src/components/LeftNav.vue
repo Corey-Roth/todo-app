@@ -1,19 +1,20 @@
 <template>
 	<nav class="left-nav">
-		<ul>
-			<li>Due today</li>
-			<li>Due this week</li>
-		</ul>
 		<div class="actions">
 			<h2 class="active">Projects</h2>
 			<h2>Tags</h2>
 			<div class="projects active">
-				<button class="secondary">New project</button>
+				<button class="secondary">+ New project</button>
 			</div>
 			<div class="tags">
-				<button class="secondary">New tag</button>
+				<button class="secondary">+ New tag</button>
 			</div>
 		</div>
+
+		<ul class="views">
+			<li>Due today</li>
+			<li>Due this week</li>
+		</ul>
 	</nav>
 </template>
 
@@ -24,10 +25,14 @@
 <style>
 	.left-nav {
 		background: #FFFFFF;
+		border-right: 1px solid #CCCCCC;
 		bottom: 0;
-		box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.16);
+		//box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.16);
+		display: flex;
+		flex-direction: column;
 		left: 0;
-		padding: 4.5em 1em 1em;
+		justify-content: space-between;
+		padding: 7em 1em 1em;
 		position: fixed;
 		text-align: left;
 		top: 0;
@@ -66,6 +71,11 @@
 
 	.actions h2.active {
 		border-bottom: 2px solid #e41f35;
+	}
+
+	.left-nav .views {
+		border-top: 1px solid #CCCCCC;
+		padding-top: 1em;
 	}
 
 	.left-nav .projects, .left-nav .tags {
