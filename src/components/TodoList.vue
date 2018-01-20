@@ -68,6 +68,15 @@
 </script>
 
 <style>
+
+    .todo-list {
+        padding: 0 0 0 4em;
+    }
+
+    .todo-list .row {
+        max-width: 76em;
+    }
+
     .row {
         display: flex;
         flex-wrap: wrap;

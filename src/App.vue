@@ -3,6 +3,7 @@
         <template>
             <div>
                 <create-todo v-on:create-todo="createTodo"></create-todo>
+                <left-nav v-on:left-nav="LeftNav"></left-nav>
                 <todo-list v-bind:todos="todos"></todo-list>
             </div>
         </template>
@@ -14,6 +15,7 @@
     import { mapState } from 'vuex';
     import TodoList from './components/TodoList';
     import CreateTodo from './components/CreateTodo';
+    import LeftNav from './components/LeftNav';
     import store from './main'
 
     export default {
@@ -21,6 +23,7 @@
         components: {
             TodoList,
             CreateTodo,
+            LeftNav,
         },
         computed: {
             ...mapState([
