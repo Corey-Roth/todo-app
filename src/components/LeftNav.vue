@@ -27,7 +27,7 @@
 		bottom: 0;
 		box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.16);
 		left: 0;
-		padding: 10em 1em 1em;
+		padding: 4.5em 1em 1em;
 		position: fixed;
 		text-align: left;
 		top: 0;

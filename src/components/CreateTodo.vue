@@ -1,23 +1,44 @@
 <template>
     <div class="create">
-            <div class="create-form"  v-bind:class="{ active: isActive }">
+            <div class="action-row">
                 <div class="row">
-                    <h2 class='mobile-only'>Add a new task</h2>
-                    <div class="field">
-                        <label>Title</label>
-                        <input v-model="titleText" type="text" class="styled-input" tabindex="1">
-                    </div>
-                    <div class="field">
-                        <label>Description</label>
-                        <input v-model="descriptionText" type="text" class="styled-input" tabindex="2">
-                    </div>
-                    <button class="primary" v-on:click="sendForm()" tabindex="3">
-                        Create
-                    </button>
-                    <button class="secondary mobile-only" v-on:click="toggleForm">Cancel</button>
+                    <button class="toggle-form" v-on:click="toggleForm" v-bind:class="{ active: isActive }">+</button>
                 </div>
             </div>
-        <button class="toggle-form mobile-only" v-on:click="toggleForm">+</button>
+            <div class="create-form"  v-bind:class="{ active: isActive }">
+                <div class="create-form-inner">
+                    <div class="row">
+                        <h2>Add a new task</h2>
+                        <div class="field">
+                            <label>Title</label>
+                            <input v-model="titleText" type="text" class="styled-input" tabindex="1">
+                        </div>
+                        <div class="field">
+                            <label>Description</label>
+                            <textarea v-model="descriptionText" type="text" class="styled-input" tabindex="2"></textarea>
+                        </div>
+                        <div class="field">
+                            <label>Project</label>
+                            <div class="styled-select">
+                                <select>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Tags</label>
+                            <div class="styled-select">
+                                <select>
+
+                                </select>
+                            </div>
+                        </div>
+                        <button class="primary" v-on:click="sendForm()" tabindex="3">
+                            Create new task
+                        </button>
+                    </div>
+                </div>
+            </div>
     </div>
 </template>
 
@@ -67,17 +88,42 @@ import { mapState } from 'vuex';
 <style>
     .create-form {
         align-items: flex-end;
-        background: #ffffff;
-        box-shadow: 0 0 20px 0 rgba(0,0,0,0.16);
-        display: flex;
+        background: rgba(255, 255, 255, 0.66);
+        bottom: 0;
+        display: none;
         left: 0;
-        padding: 2em 0;
+        opacity: 0;
+        padding-top: 1em;
         position: fixed;
         right: 0;
         text-align: left;
-        top: 0;
+        top: 3em;
+        transform: all 300ms ease;
         width: 100%;
         z-index: 2;
+    }
+
+    .active.create-form {
+        align-items: flex-start;
+        display: flex;
+        justify-content: center;
+        opacity: 1;
+    }
+
+    .create-form-inner {
+        background: #FFFFFF;
+        border-radius: 0.25em;
+        border-top: 0 none;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.16);
+        //width: 71em;
+        padding: 2em;
+    }
+
+    .create-form-inner .row {
+        flex-direction: column;
+        flex-wrap: wrap;
+        max-width: 76em;
+        padding: 0;
     }
 
     .create-form .row {
@@ -86,23 +132,23 @@ import { mapState } from 'vuex';
 
     .create-form .primary {
         font-size: 1.5em;
-        font-weight: 700;
-        max-width: 8em;
-        padding: 0.75rem 1rem;
+        font-weight: 400;
+        padding: 1rem;
     }
 
     .field {
         text-align: left;
-        padding: 0 0.5em;
-        width: calc(50% - 6em);
+        margin-bottom: 1em;
+        max-width: 20em;
+        width: 100%;
     }
 
     .field label {
         color: #333333;
         display: block;
-        font-weight: 700;
+        font-weight: 300;
         font-size: 1.125em;
-        margin-bottom: 0.5em
+        margin-bottom: 0.25em
     }
 
     .styled-input {
@@ -115,6 +161,40 @@ import { mapState } from 'vuex';
         width: 100%;
     }
 
+    textarea.styled-input {
+        min-height: 8em;
+        max-width: 100%;
+        min-width: 100%;
+    }
+
+    .styled-select {
+        background: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        border-radius: 0.25em;
+        position: relative;
+    }
+
+    .styled-select:after {
+        font-size: 1.25em;
+        content: "\25BC";
+        line-height: 1;
+        position: absolute;
+        right: 0.5rem;
+        top: 0.66rem;
+    }
+
+    .styled-select:hover:after {
+        color: #e41f35;
+    }
+
+    .styled-select select {
+        background: none;
+        appearance: none;
+        border: 0 none;
+        padding: calc(1em - 1px);
+        width: 100%;
+    }
+
     .styled-input:focus {
         box-shadow: 0 2px 2px 0 rgba(20,0,0,0.16), 0 0 0 1px rgba(20,0,0,0.08);
     }
@@ -122,27 +202,37 @@ import { mapState } from 'vuex';
     .toggle-form {
         background: #FFFFFF;
         border: 0 none;
-        border-radius: 0.5em;
-        bottom: 0.33em;
-        box-shadow: 0 2px 2px 0 rgba(20,0,0,0.16), 0 0 0 1px rgba(20,0,0,0.08);
         color: #333333;
         font-size: 3em;
         line-height: 1;
         height: 1em;
-        position: fixed;
-        right: 0.33em;
         width: 1em;
-        z-index: 2;
     }
 
-    .toggle-form:hover {
-        box-shadow: 0 4px 4px 0 rgba(20,0,0,0.16), 0 0 0 1px rgba(20,0,0,0.08);
+    .toggle-form:hover, .toggle-form.active {
         color: #e41f35;
         cursor: pointer;
     }
 
+    .action-row {
+        background: #FFFFFF;
+        box-shadow: 0 4px 4px 0 rgba(20,0,0,0.16), 0 0 0 1px rgba(20,0,0,0.08);
+        display: flex;
+        left: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 100%;
+        z-index: 3;
+    }
+
+    .action-row .row {
+       justify-content: flex-end;
+    }
+
     .create-form h2 {
         border-bottom: 1px solid #CCCCCC;
+        box-shadow: 0 0.75rem 0.5rem -1rem rgba(0, 0, 0, 0.33);
         font-size: 2em;
         font-weight: 300;
         margin: 0 0 0.5em;
@@ -162,34 +252,12 @@ import { mapState } from 'vuex';
         display: none;
     }
 
+    .toggle-form {
+        display: block;
+    }
+
     @media screen and (max-width: 767px) {
-        .create-form {
-            background: #ffffff;
-            bottom: 0;
-            display: none;
-            left: 0;
-            margin: 0;
-            opacity: 0;
-            padding: 2em;
-            position: fixed;
-            right: 0;
-            top: 0;
-            transform: all 300ms ease;
-            z-index: 3;
-        }
-
-        .active.create-form {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            opacity: 1;
-        }
-
         .mobile-only {
-            display: block;
-        }
-
-        .toggle-form {
             display: block;
         }
 

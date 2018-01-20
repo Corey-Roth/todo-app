@@ -85,7 +85,7 @@
 
     #app {
       margin: 0 auto;
-      padding: 12em 0 4.5em;
+      padding: 4.5em 0;
       text-align: center;
       width: 100%;
     }
