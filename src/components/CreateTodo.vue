@@ -20,16 +20,20 @@
                         <div class="field">
                             <label>Project</label>
                             <div class="styled-select">
-                                <select>
-
+                                <select v-model="project">
+                                    <option>Test project 1</option>
+                                    <option>Test project the second</option>
+                                    <option>Test project the third</option>
                                 </select>
                             </div>
                         </div>
                         <div class="field">
                             <label>Tags</label>
                             <div class="styled-select">
-                                <select>
-
+                                <select v-model="tags">
+                                    <option>Test tag 1</option>
+                                    <option>Test tag the second</option>
+                                    <option>Test tag the third</option>
                                 </select>
                             </div>
                         </div>
@@ -50,6 +54,8 @@ import { mapState } from 'vuex';
       return {
         titleText: '',
         descriptionText: '',
+        project: '',
+        tags: '',
         isCreating: false,
         isActive: false,
       };
@@ -67,15 +73,21 @@ import { mapState } from 'vuex';
         if (this.titleText.length > 0 && this.descriptionText.length > 0) {
           const title = this.titleText;
           const description = this.descriptionText;
+          const project = this.project;
+          const tags = this.tags;
           this.$emit('create-todo', {
             title,
             description,
+            project,
+            tags,
             done: false,
             id: this._uid,
           });
           this.titleText = '';
           this.descriptionText = '';
           this.isCreating = false;
+          this.project = '';
+          this.tags = '';
         }
       },
         toggleForm() {
@@ -191,7 +203,8 @@ import { mapState } from 'vuex';
         background: none;
         appearance: none;
         border: 0 none;
-        padding: calc(1em - 1px);
+        font-size: 1em;
+        padding: calc(0.5em - 1px);
         width: 100%;
     }
 

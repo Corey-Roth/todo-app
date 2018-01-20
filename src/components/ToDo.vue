@@ -3,10 +3,15 @@
         <transition name="fade" mode="out-in">
             <div class="content" v-if="!isEditing" key="saved">
                 <div class="header">
-                    {{ todo.title }}
-                    <span class="right floated edit icon" v-on:click="showForm">
-                        <i class="edit icon"><img src="../assets/edit.svg"/></i>
-                    </span>
+                    <p class="projects">
+                        {{ todo.project }}
+                       <span class="right floated edit icon" v-on:click="showForm">
+                            <i class="edit icon"><img src="../assets/edit.svg"/></i>
+                        </span>
+                    </p>
+                    <div class="header-row">
+                        {{ todo.title }}
+                    </div>
                 </div>
                 <div class="meta">
                     {{ todo.description }}
@@ -32,19 +37,27 @@
             </div>
         </transition>
 
-        <transition name="fade" mode="out-in">
-            <div class="completed" v-if="!isEditing && todo.done" disabled>
-                Completed
-            </div>
-            <div class="primary" v-on:click="completeTodo(todo)" v-if="!isEditing && !todo.done">
-                Complete this task
-            </div>
-        </transition>
-        <transition name="fade" mode="out-in">
-            <div class="secondary" v-on:click="deleteTodo(todo)" v-show="!isEditing">
-                Delete
-            </div>
-        </transition>
+        <div class="content">
+            <transition name="fade" mode="out-in">
+                <div class="completed" v-if="!isEditing && todo.done" disabled>
+                    Completed
+                </div>
+                <div class="primary" v-on:click="completeTodo(todo)" v-if="!isEditing && !todo.done">
+                    Done
+                </div>
+            </transition>
+            <transition name="fade" mode="out-in">
+                <div class="secondary" v-on:click="deleteTodo(todo)" v-show="!isEditing">
+                    Delete
+                </div>
+            </transition>
+        </div>
+
+        <div class="footer">
+            <p class="tags">
+                {{ todo.tags }}
+            </p>
+        </div>
     </div>
 </template>
 
@@ -80,10 +93,14 @@
         box-shadow: 0 2px 2px 0 rgba(20,0,0,0.16), 0 0 0 1px rgba(20,0,0,0.08);
         display: inline-block;
         margin: 0.5em;
-        padding: 2em;
+        padding: 1.5em 0 0;
         position: relative;
         text-align: left;
-        width: calc(25% - 1rem);
+        width: calc(33.33% - 1rem);
+    }
+
+    .card .content {
+        padding: 0 1.5em;
     }
 
     .list {
@@ -132,12 +149,13 @@
     }
 
     .content {
-        margin-bottom: 1em;
+        margin-bottom: 1.5em;
     }
 
     .header {
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
         font-size: 2em;
         font-weight: 300;
         line-height: 90%;
@@ -147,9 +165,9 @@
     .edit {
         cursor: pointer;
         opacity: 0.66;
-        position: relative;
-        right: -0.5rem;
-        top: -0.5rem;
+        position: absolute;
+        right: 0;
+        top: 0;
     }
 
     .edit:hover {
@@ -209,6 +227,45 @@
 
     .fade-enter, .fade-leave-to {
       opacity: 0;
+    }
+
+    .footer {
+        background: #1D83D8;
+        color: #FFFFFF;
+        display: flex;
+        font-size: 14px;
+        line-height: 1;
+        margin-bottom: 0;
+        margin-top: 1rem;
+        padding: 0.75rem 1.5rem 0.75rem;
+        text-align: left;
+        width: 100%;
+    }
+
+    .header-row {
+        width: 100%;
+    }
+
+    .header .projects {
+        color: #847974;
+        font-size: 14px;
+        font-weight: 700;
+        margin: 0 0 1.5rem;
+        position: relative;
+        width: 100%;
+    }
+
+    .footer .tags {
+        margin: 0;
+    }
+
+    .card .primary, .card .secondary {
+        display: inline-block;
+        width: auto;
+    }
+
+    .card .secondary {
+        padding: 1em;
     }
 
     @media screen and (max-width: 1024px) {

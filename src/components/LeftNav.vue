@@ -68,7 +68,7 @@
 		border-bottom: 2px solid #e41f35;
 	}
 
-	.projects, .tags {
+	.left-nav .projects, .left-nav .tags {
 		display: none;
 		width: 100%;
 	}

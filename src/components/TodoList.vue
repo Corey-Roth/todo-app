@@ -13,7 +13,7 @@
             <p>Get started by adding a task.</p>
         </div>
         <transition fade mode="out-in">
-            <div class="row" v-bind:class="{ list: isList }">
+            <div class="row card-row" v-bind:class="{ list: isList }">
                 <todo
                     v-on:delete-todo="deleteTodo"
                     v-on:complete-todo="completeTodo"
@@ -53,7 +53,7 @@
       methods: {
         deleteTodo(todo) {
             const todoIndex = this.todos.indexOf(todo);
-            this.todos.splice(todoIndex);
+            this.todos.splice(todoIndex, 1);
         },
         completeTodo(todo) {
           const todoIndex = this.todos.indexOf(todo);
@@ -84,6 +84,10 @@
         max-width: 80em;
         padding: 0 4.5em;
         width: 100%;
+    }
+
+    .card-row {
+        align-items: flex-start;
     }
 
     .toggle {
