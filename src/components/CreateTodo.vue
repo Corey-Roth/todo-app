@@ -2,7 +2,9 @@
     <div class="create">
             <div class="action-row">
                 <div class="row">
-                    <button class="toggle-menu mobile-only" v-on:click="openTheMenu()" v-bind:class="{ open:isOpen }"><img src="../assets/menu.svg"/></button>
+                    <button class="toggle-menu mobile-only" v-on:click="openTheMenu()" v-bind:class="{ open:openStatus }">
+                        <img src="../assets/menu.svg"/>
+                    </button>
                     <button class="toggle-form" v-on:click="toggleForm" v-bind:class="{ active: isActive }">+</button>
                 </div>
             </div>
@@ -38,9 +40,12 @@
                                 </select>
                             </div>
                         </div>
-                        <button class="primary" v-on:click="sendForm()" tabindex="3">
-                            Create new task
-                        </button>
+                        <div class="button-row">
+                            <button class="primary small" v-on:click="sendForm()" tabindex="3">
+                                Create new task
+                            </button>
+                            <button class="secondary" v-on:click="toggleForm" tabindex="4">Cancel</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -51,6 +56,7 @@
 import { mapState } from 'vuex';
 
   export default {
+    props: ['isOpen'],
     data() {
       return {
         titleText: '',
@@ -59,12 +65,11 @@ import { mapState } from 'vuex';
         tags: '',
         isCreating: false,
         isActive: false,
-        isOpen: false,
       };
     },
     computed: {
-        theCount () {
-            return this.$store.state.listCount
+        openStatus() {
+            return this.$store.state.isOpen
         },
         ...mapState([
             'store',
@@ -96,8 +101,7 @@ import { mapState } from 'vuex';
             this.isActive = !this.isActive;
         },
         openTheMenu() {
-            this.$emit('toggle-menu');
-            this.isOpen = !this.isOpen;
+            this.$store.commit('toggleMenu');
         },
     },
   };
@@ -148,10 +152,20 @@ import { mapState } from 'vuex';
         align-items: flex-end;
     }
 
-    .create-form .primary {
-        font-size: 1.5em;
+    .small {
+        font-size: 1.125em;
         font-weight: 400;
         padding: 1rem;
+    }
+
+    .create-form .button-row {
+        display: flex;
+        width: 100%;
+    }
+
+    .create-form .secondary {
+        padding: 1rem;
+        width: 33.33%;
     }
 
     .field {

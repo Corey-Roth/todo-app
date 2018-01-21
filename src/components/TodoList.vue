@@ -43,8 +43,8 @@
         };
       },
         computed: {
-            theCount () {
-                return this.$store.state.listCount
+            theCount() {
+                return this.$store.state.listCount;
             },
             ...mapState([
                 'store',

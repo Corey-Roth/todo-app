@@ -1,6 +1,6 @@
 <template>
-	<nav class="left-nav" v-bind:class="{ open:isOpen }">
-		<div class="actions">
+	<div class="left-nav" v-bind:class="{ open:openStatus }">
+		<nav class="actions">
 			<h2 class="active">Projects</h2>
 			<h2>Tags</h2>
 			<div class="projects active">
@@ -9,17 +9,31 @@
 			<div class="tags">
 				<button class="secondary">+ New tag</button>
 			</div>
-		</div>
+		</nav>
 
-		<ul class="views">
-			<li>Due today</li>
-			<li>Due this week</li>
-		</ul>
-	</nav>
+		<nav class="views">
+			<ul>
+				<li>Due today</li>
+				<li>Due this week</li>
+			</ul>
+		</nav>
+	</div>
 </template>
 
 <script>
+	import { mapState } from 'vuex';
 
+	export default {
+        props: ['isOpen'],
+	    computed: {
+	        openStatus() {
+	            return this.$store.state.isOpen
+	        },
+        	...mapState([
+            	'store',
+        	]),
+    	},
+    }
 </script>
 
 <style>
@@ -90,6 +104,10 @@
 	@media (max-width: 767px) {
 		.left-nav {
 			display: none;
+		}
+
+		.left-nav.open {
+			display: flex;
 		}
 	}
 </style>

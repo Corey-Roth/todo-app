@@ -3,7 +3,7 @@
         <template>
             <div>
                 <create-todo v-on:create-todo="createTodo"></create-todo>
-                <left-nav v-on:left-nav="LeftNav"></left-nav>
+                <left-nav></left-nav>
                 <todo-list v-bind:todos="todos"></todo-list>
             </div>
         </template>
@@ -16,7 +16,7 @@
     import TodoList from './components/TodoList';
     import CreateTodo from './components/CreateTodo';
     import LeftNav from './components/LeftNav';
-    import store from './main'
+    import store from './main';
 
     export default {
         name: 'app',
@@ -35,17 +35,12 @@
             return {
                 todos: [{
                 }],
-                isOpen: false,
             };
-
         },
         methods: {
             createTodo(newTodo) {
                 this.todos.push(newTodo);
                 sweetalert('Success!', 'To-Do created!', 'success');
-            },
-            toggleMenu() {
-                this.isOpen = !this.isOpen;
             },
         },
     };

@@ -6,7 +6,7 @@ if (navigator.userAgent.indexOf('PhantomJS') > -1) {
 }
 
 export const state = {
-  todos: JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '[]')
+  isOpen: false,
 };
 
 export const mutations = {
@@ -37,5 +37,9 @@ export const mutations = {
 
   clearCompleted (state) {
     state.todos = state.todos.filter(todo => !todo.done);
-  }
+  },
+
+  toggleMenu(menu) {
+      menu.isOpen = !menu.isOpen;
+  },
 };
