@@ -137,7 +137,6 @@ import { mapState } from 'vuex';
         border-radius: 0.25em;
         border-top: 0 none;
         box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.16);
-        //width: 71em;
         padding: 2em;
     }
 
