@@ -20,19 +20,14 @@
                             <label>Description</label>
                             <textarea v-model="descriptionText" type="text" class="styled-input" tabindex="2"></textarea>
                         </div>
-                        <div class="field hidden-mobile">
+                        <div class="field hidden-mobile"  v-if="$store.state.projects.length > 1">
                             <label>Project</label>
-                            <div class="styled-select" v-if="$store.state.projects.length > 1">
+                            <div class="styled-select">
                                 <select v-model="project">
                                     <option v-for="(project, index) in $store.state.projects" :project.sync="project" v-if="index > 0">
                                         {{ project.name }}
                                     </option>
                                 </select>
-                            </div>
-                            <div class="styled-select disabled" v-if="$store.state.projects.length <= 1">
-                                <select disabled>
-                                </select>
-                            </div>
                             </div>
                         </div>
                         <div class="field hidden-mobile">
@@ -103,6 +98,7 @@ import { mapState } from 'vuex';
           this.isCreating = false;
           this.project = '';
           this.tags = '';
+          this.isActive = !this.isActive;
         }
       },
         toggleForm() {
@@ -146,6 +142,7 @@ import { mapState } from 'vuex';
         border-top: 0 none;
         box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.16);
         padding: 2em;
+        width: 24em;
     }
 
     .create-form-inner .row {
@@ -167,18 +164,26 @@ import { mapState } from 'vuex';
 
     .create-form .button-row {
         display: flex;
+        justify-content: flex-start;
         width: 100%;
     }
 
+    .create-form .primary {
+        margin: 0;
+        max-width: 10em;
+        width: auto;
+    }
+
     .create-form .secondary {
+        margin: 0;
         padding: 1rem;
-        width: 33.33%;
+        width: auto;
     }
 
     .field {
         text-align: left;
         margin-bottom: 1em;
-        max-width: 20em;
+        max-width: 30em;
         width: 100%;
     }
 
@@ -256,6 +261,7 @@ import { mapState } from 'vuex';
         font-size: 3em;
         line-height: 1;
         height: 1em;
+        padding: 0;
         width: 1em;
     }
 
@@ -269,6 +275,7 @@ import { mapState } from 'vuex';
         box-shadow: 0 4px 4px 0 rgba(20,0,0,0.16), 0 0 0 1px rgba(20,0,0,0.08);
         display: flex;
         left: 0;
+        padding-left: 15rem;
         position: fixed;
         right: 0;
         top: 0;

@@ -7,7 +7,7 @@
 		</ul>
 		<div class="new-project" v-if="addingProject">
 			<input class="styled-input" v-model="projectName" type="text"/>
-			<button class="primary" v-on:click="sendNewProject">Start project</button>
+			<button class="primary" v-on:click="sendNewProject">Create project</button>
 		</div>
 		<button class="secondary" v-if="!addingProject" v-on:click="toggleProjects">+ New project</button>
 	</div>
@@ -77,5 +77,10 @@
 		font-weight: 600;
 		margin: 1em 0 2em;
 		width: auto;
+	}
+
+	.project-list {
+		max-height: 10em;
+		overflow-y: auto;
 	}
 </style>

@@ -70,11 +70,12 @@
 <style>
 
     .todo-list {
-        padding: 0 0 0 4em;
+        //max-width: 95rem;
+        padding-left: 15rem;
     }
 
     .todo-list .row {
-        max-width: 76em;
+        //max-width: 76em;
     }
 
     .row {
@@ -105,6 +106,10 @@
     .toggle img {
         height: 1.5em;
         width: 1.5em;
+    }
+
+    .toggle:last-of-type, .toggle.list:last-of-type {
+        padding-right: 0;
     }
 
     .toggle:hover {

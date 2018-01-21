@@ -73,7 +73,7 @@
             </transition>
         </div>
 
-        <div class="footer" v-if="!isEditing">
+        <div class="footer" v-if="!isEditing && todo.tags.length">
             <p class="tags">
                 {{ todo.tags }}
             </p>

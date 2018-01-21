@@ -1,9 +1,9 @@
 <template>
 	<div class="left-nav" v-bind:class="{ open:openStatus }">
 		<nav class="actions">
-			<h2 class="active">Projects</h2>
-			<h2>Tags</h2>
+			<h2>Projects</h2>
 			<projects></projects>
+			<h2>Tags</h2>
 			<div class="tags">
 				<button class="secondary">+ New tag</button>
 			</div>
@@ -70,16 +70,10 @@
 		padding: 0.5em 0;
 	}
 
-	.actions {
-		display: flex;
-		flex-wrap: wrap;
-	}
-
 	.actions h2 {
 		border-bottom: 1px solid #CCCCCC;
 		font-size: 1em;
 		padding-bottom: 0.25em;
-		width: 50%;
 	}
 
 	.actions .secondary {
@@ -91,24 +85,17 @@
 		width: auto;
 	}
 
-	.actions h2.active {
-		border-bottom: 2px solid #e41f35;
-	}
-
 	.left-nav .views {
 		border-top: 1px solid #CCCCCC;
 		padding-top: 1em;
 	}
 
-	.left-nav .projects, .left-nav .tags {
-		display: none;
-		width: 100%;
-	}
-
-	.actions .active {
+	.projects, .tags {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
+		margin-bottom: 5em;
+		width: 100%;
 	}
 
 	@media (max-width: 767px) {
