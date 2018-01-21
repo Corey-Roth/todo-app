@@ -7,6 +7,8 @@ if (navigator.userAgent.indexOf('PhantomJS') > -1) {
 
 export const state = {
   isOpen: false,
+  projects: [{
+  }],
 };
 
 export const mutations = {
@@ -41,5 +43,12 @@ export const mutations = {
 
   toggleMenu(menu) {
       menu.isOpen = !menu.isOpen;
+  },
+
+  //Projects
+  addProject (state, {text}) {
+    state.projects.push({
+      text,
+    });
   },
 };

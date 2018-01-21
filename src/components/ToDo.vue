@@ -13,7 +13,7 @@
                         {{ todo.title }}
                     </div>
                 </div>
-                <div class="meta">
+                <div class="description">
                     {{ todo.description }}
                 </div>
             </div>
@@ -26,7 +26,27 @@
                     </div>
                     <div class="field">
                         <label>Project</label>
-                        <input type="text" v-model="todo.description" class="styled-input dark">
+                        <textarea type="text" v-model="todo.description" class="styled-input dark"></textarea>
+                    </div>
+                    <div class="field">
+                        <label>Project</label>
+                        <div class="styled-select">
+                            <select v-model="project">
+                                <option>Test project 1</option>
+                                <option>Test project the second</option>
+                                <option>Test project the third</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Tags</label>
+                        <div class="styled-select">
+                            <select v-model="tags">
+                                <option>Test tag 1</option>
+                                <option>Test tag the second</option>
+                                <option>Test tag the third</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="ui two button attached buttons">
                         <button class="primary" v-on:click="hideForm">
@@ -53,7 +73,7 @@
             </transition>
         </div>
 
-        <div class="footer">
+        <div class="footer" v-if="!isEditing">
             <p class="tags">
                 {{ todo.tags }}
             </p>
@@ -135,12 +155,6 @@
 
     .edit img {
         width: 1.5rem;
-    }
-
-    .dark {
-        border: 1px solid #cccccc;
-        margin-bottom: 1.5em;
-        padding: 0.5em 1em;
     }
 
     .list .stacked {
