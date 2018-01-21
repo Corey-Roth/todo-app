@@ -46,9 +46,10 @@ export const mutations = {
   },
 
   //Projects
-  addProject (state, {text}) {
+  addProject (state, {name, id}) {
     state.projects.push({
-      text,
+      name,
+      id,
     });
   },
 };

@@ -22,12 +22,17 @@
                         </div>
                         <div class="field hidden-mobile">
                             <label>Project</label>
-                            <div class="styled-select">
+                            <div class="styled-select" v-if="$store.state.projects.length > 1">
                                 <select v-model="project">
-                                    <option>Test project 1</option>
-                                    <option>Test project the second</option>
-                                    <option>Test project the third</option>
+                                    <option v-for="(project, index) in $store.state.projects" :project.sync="project" v-if="index > 0">
+                                        {{ project.name }}
+                                    </option>
                                 </select>
+                            </div>
+                            <div class="styled-select disabled" v-if="$store.state.projects.length <= 1">
+                                <select disabled>
+                                </select>
+                            </div>
                             </div>
                         </div>
                         <div class="field hidden-mobile">
@@ -56,7 +61,10 @@
 import { mapState } from 'vuex';
 
   export default {
-    props: ['isOpen'],
+    props: [
+        'isOpen',
+        'projects',
+    ],
     data() {
       return {
         titleText: '',
@@ -215,8 +223,17 @@ import { mapState } from 'vuex';
         top: 0.66rem;
     }
 
+    .disabled {
+        background: #ebebeb;
+        cursor: not-allowed;
+    }
+
     .styled-select:hover:after {
         color: #e41f35;
+    }
+
+    .disabled:hover:after {
+        color: #333333;
     }
 
     .styled-select select {

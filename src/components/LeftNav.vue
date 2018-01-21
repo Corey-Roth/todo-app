@@ -3,13 +3,7 @@
 		<nav class="actions">
 			<h2 class="active">Projects</h2>
 			<h2>Tags</h2>
-			<div class="projects active">
-				<div class="new-project" v-if="addingProject">
-					<input class="styled-input" />
-					<button class="primary" v-on:click="toggleProjects">Start project</button>
-				</div>
-				<button class="secondary" v-if="!addingProject" v-on:click="toggleProjects">+ New project</button>
-			</div>
+			<projects></projects>
 			<div class="tags">
 				<button class="secondary">+ New tag</button>
 			</div>
@@ -26,9 +20,13 @@
 
 <script>
 	import { mapState } from 'vuex';
+	import Projects from './Projects';
 
 	export default {
         props: ['isOpen'],
+        components: {
+        	Projects,
+        },
         data() {
           return {
             addingProject: false,
@@ -42,11 +40,6 @@
             	'store',
         	]),
     	},
-    	methods: {
-          toggleProjects() {
-            this.addingProject = !this.addingProject;
-          },
-    	}
     }
 </script>
 
@@ -116,28 +109,6 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
-	}
-
-	/* new project */
-	.new-project {
-		align-items: flex-start;
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		width: 100%;
-	}
-
-	.new-project .styled-input {
-		font-size: 0.875rem;
-		padding: 0.5rem 0.25rem;
-		width: 100%;
-	}
-
-	.new-project .primary {
-		font-size: 0.875rem;
-		font-weight: 600;
-		margin: 1em 0 2em;
-		width: auto;
 	}
 
 	@media (max-width: 767px) {
