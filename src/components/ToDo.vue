@@ -28,13 +28,13 @@
                         <label>Project</label>
                         <textarea type="text" v-model="todo.description" class="styled-input dark"></textarea>
                     </div>
-                    <div class="field">
+                    <div class="field"  v-if="$store.state.projects.length > 1">
                         <label>Project</label>
                         <div class="styled-select">
                             <select v-model="project">
-                                <option>Test project 1</option>
-                                <option>Test project the second</option>
-                                <option>Test project the third</option>
+                                <option v-for="(project, index) in $store.state.projects" :project.sync="project" v-if="index > 0">
+                                    {{ project.name }}
+                                </option>
                             </select>
                         </div>
                     </div>

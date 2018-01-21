@@ -8,46 +8,49 @@
                     <button class="toggle-form" v-on:click="toggleForm" v-bind:class="{ active: isActive }">+</button>
                 </div>
             </div>
+
             <div class="create-form"  v-bind:class="{ active: isActive }">
-                <div class="create-form-inner">
-                    <div class="row">
-                        <h2>Add a new task</h2>
-                        <div class="field">
-                            <label>Title</label>
-                            <input v-model="titleText" type="text" class="styled-input" tabindex="1">
-                        </div>
-                        <div class="field">
-                            <label>Description</label>
-                            <textarea v-model="descriptionText" type="text" class="styled-input" tabindex="2"></textarea>
-                        </div>
-                        <div class="field hidden-mobile"  v-if="$store.state.projects.length > 1">
-                            <label>Project</label>
-                            <div class="styled-select">
-                                <select v-model="project">
-                                    <option v-for="(project, index) in $store.state.projects" :project.sync="project" v-if="index > 0">
-                                        {{ project.name }}
-                                    </option>
-                                </select>
+                <transition name="slide" mode="out-in">
+                    <div class="create-form-inner" v-show="{ active: isActive }">
+                        <div class="row">
+                            <h2>Add a new task</h2>
+                            <div class="field">
+                                <label>Title</label>
+                                <input v-model="titleText" type="text" class="styled-input" tabindex="1">
                             </div>
-                        </div>
-                        <div class="field hidden-mobile">
-                            <label>Tags</label>
-                            <div class="styled-select">
-                                <select v-model="tags">
-                                    <option>Test tag 1</option>
-                                    <option>Test tag the second</option>
-                                    <option>Test tag the third</option>
-                                </select>
+                            <div class="field">
+                                <label>Description</label>
+                                <textarea v-model="descriptionText" type="text" class="styled-input" tabindex="2"></textarea>
                             </div>
-                        </div>
-                        <div class="button-row">
-                            <button class="primary small" v-on:click="sendForm()" tabindex="3">
-                                Create new task
-                            </button>
-                            <button class="secondary" v-on:click="toggleForm" tabindex="4">Cancel</button>
+                            <div class="field hidden-mobile"  v-if="$store.state.projects.length > 1">
+                                <label>Project</label>
+                                <div class="styled-select">
+                                    <select v-model="project">
+                                        <option v-for="(project, index) in $store.state.projects" :project.sync="project" v-if="index > 0">
+                                            {{ project.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field hidden-mobile">
+                                <label>Tags</label>
+                                <div class="styled-select">
+                                    <select v-model="tags">
+                                        <option>Test tag 1</option>
+                                        <option>Test tag the second</option>
+                                        <option>Test tag the third</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="button-row">
+                                <button class="primary small" v-on:click="sendForm()" tabindex="3">
+                                    Create new task
+                                </button>
+                                <button class="secondary" v-on:click="toggleForm" tabindex="4">Cancel</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </transition>
             </div>
     </div>
 </template>
@@ -303,6 +306,25 @@ import { mapState } from 'vuex';
 
     .modal-enter, .modal-leave-to {
       opacity: 0;
+    }
+
+    .slide-enter-active, .slide-leave-active {
+      transition: all 300ms ease;
+    }
+
+    .slide-enter {
+      opacity: 0;
+      transform: translateY(-2em);
+    }
+
+    .slide-enter-to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .slide-leave-to {
+        opacity: 1;
+        transform: translateY(-2em);
     }
 
     .mobile-only {

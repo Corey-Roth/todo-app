@@ -1,15 +1,21 @@
 <template>
 	<div class="projects active">
 		<ul class="project-list">
-			<li v-for="(project, index) in $store.state.projects" :project.sync="project">
+			<li v-for="(project, index) in $store.state.projects" :project.sync="project.index" v-if="index > 0">
 				{{ project.name }}
 			</li>
 		</ul>
-		<div class="new-project" v-if="addingProject">
-			<input class="styled-input" v-model="projectName" type="text"/>
-			<button class="primary" v-on:click="sendNewProject">Create project</button>
-		</div>
-		<button class="secondary" v-if="!addingProject" v-on:click="toggleProjects">+ New project</button>
+
+		<transition name="fade" mode="out-in">
+			<div class="new-project" v-if="addingProject">
+				<input class="styled-input" v-model="projectName" type="text"/>
+				<button class="primary" v-on:click="sendNewProject">Create project</button>
+			</div>
+		</transition>
+
+		<transition name="fade" mode="out-in">
+			<button class="secondary" v-if="!addingProject" v-on:click="toggleProjects">+ New project</button>
+		</transition>
 	</div>
 </template>
 
