@@ -10,6 +10,7 @@
             </button>
         </div>
         <div class="row empty-row" v-if="todos.length < 2">
+            <img src="../assets/new-task.svg"/>
             <p>Get started by adding a task.</p>
         </div>
         <transition fade mode="out-in">
@@ -134,17 +135,27 @@
         padding-top: 1em;
     }
 
-    .empty-row {
+    .row.empty-row {
         align-items: center;
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
-        min-height: 50vh;
+        min-height: 30vh;
+        padding: 10vh 0;
+    }
+
+    .empty-row img {
+        height: auto;
+        transform: translateX(1em);
+        width: 15em;
     }
 
     .empty-row p {
         color: #999999;
         font-size: 1.5em;
         font-weight: 400;
+        margin: 0;
+        width: 100%;
     }
 
     @media screen and (max-width: 991px) {

@@ -261,11 +261,10 @@ import { mapState } from 'vuex';
         background: #FFFFFF;
         border: 0 none;
         color: #333333;
-        font-size: 3em;
+        font-size: 2.75em;
         line-height: 1;
         height: 1em;
         padding: 0;
-        width: 1em;
     }
 
     .toggle-form:hover, .toggle-form.active {

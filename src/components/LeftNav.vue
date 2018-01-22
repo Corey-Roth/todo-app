@@ -11,8 +11,8 @@
 
 		<nav class="views">
 			<ul>
-				<li>Due today</li>
-				<li>Due this week</li>
+				<li><img src="../assets/calendar.svg"/>Due today</li>
+				<li><img src="../assets/calendar.svg"/>Due this week</li>
 			</ul>
 		</nav>
 	</div>
@@ -96,6 +96,13 @@
 		justify-content: flex-start;
 		margin-bottom: 5em;
 		width: 100%;
+	}
+
+	.views img {
+		height: auto;
+		margin-right: 0.5em;
+		transform: translateY(2px);
+		width: 1.25em;
 	}
 
 	@media (max-width: 767px) {

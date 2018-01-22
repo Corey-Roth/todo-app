@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="28" viewBox="0 0 32 28">
+  <defs>
+    <style>
+      .\38 78ff9a6-ee15-4c64-9863-b485edf8d627 {
+        fill: #333;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <title>calendar</title>
+  <g id="cdb4b59a-163c-4d9a-9eaf-56bf6e1115ec" data-name="Layer 2">
+    <g id="469179ce-0e22-49d7-89df-cf69fe41c4ab" data-name="Layer 1">
+      <g id="16bceede-9337-420f-a9ab-58ea49ac6f40" data-name="calendar">
+        <g id="826dafa2-6298-4c20-96f4-574a840484c5" data-name="calendar">
+          <g id="2f49d8c3-483d-42bc-b7af-1ac1c7cb314e" data-name="Rectangle 24 copy 2">
+            <path class="878ff9a6-ee15-4c64-9863-b485edf8d627" d="M26,2V0H22V2H10V0H6V2H0V28H32V2Zm2,22H4V12H28Zm0-14H4V6H28ZM10,6H6V8h4ZM26,6H22V8h4Z"/>
+          </g>
+          <g id="66ddba3c-5ca9-458f-a2d5-f7f7e8d2bf5a" data-name="Shape 6">
+            <polygon class="878ff9a6-ee15-4c64-9863-b485edf8d627" points="18 22 26 22 26 14 18 22"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
