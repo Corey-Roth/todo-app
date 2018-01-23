@@ -14,7 +14,8 @@
                     </div>
                 </div>
                 <div class="description">
-                    {{ todo.description }}
+                    <p>{{ todo.dueDate }}</p>
+                    <p>{{ todo.description }}</p>
                 </div>
             </div>
 
@@ -25,13 +26,16 @@
                         <input type="text" v-model="todo.title" class="styled-input dark">
                     </div>
                     <div class="field">
+                        <input type="date" v-model="todo.dueDate" class="datepicker styled-input" tabindex="2">
+                    </div>
+                    <div class="field">
                         <label>Project</label>
                         <textarea type="text" v-model="todo.description" class="styled-input dark"></textarea>
                     </div>
                     <div class="field"  v-if="$store.state.projects.length > 1">
                         <label>Project</label>
                         <div class="styled-select">
-                            <select v-model="project">
+                            <select v-model="todo.project">
                                 <option v-for="(project, index) in $store.state.projects" :project.sync="project" v-if="index > 0">
                                     {{ project.name }}
                                 </option>

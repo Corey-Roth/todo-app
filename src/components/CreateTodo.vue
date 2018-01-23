@@ -19,13 +19,16 @@
                                 <input v-model="titleText" type="text" class="styled-input" tabindex="1">
                             </div>
                             <div class="field">
+                                <input type="date" v-model="dueDate" class="datepicker styled-input" tabindex="2">
+                            </div>
+                            <div class="field">
                                 <label>Description</label>
-                                <textarea v-model="descriptionText" type="text" class="styled-input" tabindex="2"></textarea>
+                                <textarea v-model="descriptionText" type="text" class="styled-input" tabindex="3"></textarea>
                             </div>
                             <div class="field hidden-mobile"  v-if="$store.state.projects.length > 1">
                                 <label>Project</label>
                                 <div class="styled-select">
-                                    <select v-model="project">
+                                    <select v-model="project" tabindex="4">
                                         <option v-for="(project, index) in $store.state.projects" :project.sync="project" v-if="index > 0">
                                             {{ project.name }}
                                         </option>
@@ -35,7 +38,7 @@
                             <div class="field hidden-mobile">
                                 <label>Tags</label>
                                 <div class="styled-select">
-                                    <select v-model="tags">
+                                    <select v-model="tags" tabindex="5">
                                         <option>Test tag 1</option>
                                         <option>Test tag the second</option>
                                         <option>Test tag the third</option>
@@ -43,10 +46,10 @@
                                 </div>
                             </div>
                             <div class="button-row">
-                                <button class="primary small" v-on:click="sendForm()" tabindex="3">
+                                <button class="primary small" v-on:click="sendForm()" tabindex="6">
                                     Create new task
                                 </button>
-                                <button class="secondary" v-on:click="toggleForm" tabindex="4">Cancel</button>
+                                <button class="secondary" v-on:click="toggleForm" tabindex="7">Cancel</button>
                             </div>
                         </div>
                     </div>
@@ -66,6 +69,7 @@ import { mapState } from 'vuex';
     data() {
       return {
         titleText: '',
+        dueDate: '',
         descriptionText: '',
         project: '',
         tags: '',
@@ -88,8 +92,10 @@ import { mapState } from 'vuex';
           const description = this.descriptionText;
           const project = this.project;
           const tags = this.tags;
+          const dueDate = this.dueDate;
           this.$emit('create-todo', {
             title,
+            dueDate,
             description,
             project,
             tags,
@@ -97,6 +103,7 @@ import { mapState } from 'vuex';
             id: this._uid,
           });
           this.titleText = '';
+          this.dueDate = '';
           this.descriptionText = '';
           this.isCreating = false;
           this.project = '';
