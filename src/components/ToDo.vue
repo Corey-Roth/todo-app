@@ -3,18 +3,19 @@
         <transition name="fade" mode="out-in">
             <div class="content" v-if="!isEditing" key="saved">
                 <div class="header">
-                    <p class="projects">
-                        {{ todo.project }}
-                       <span class="right floated edit icon" v-on:click="showForm">
-                            <i class="edit icon"><img src="../assets/edit.svg"/></i>
-                        </span>
-                    </p>
+                    <div class="row">
+                        <p class="projects">
+                            {{ todo.project }}
+                        </p>
+                        <p class="date">
+                            {{ todo.dueDate }}
+                        </p>
+                    </div>
                     <div class="header-row">
                         {{ todo.title }}
                     </div>
                 </div>
                 <div class="description">
-                    <p>{{ todo.dueDate }}</p>
                     <p>{{ todo.description }}</p>
                 </div>
             </div>
@@ -62,19 +63,24 @@
         </transition>
 
         <div class="content buttons">
-            <transition name="fade" mode="out-in">
-                <div class="completed" v-if="!isEditing && todo.done" disabled>
-                    Completed
-                </div>
-                <div class="primary" v-on:click="completeTodo(todo)" v-if="!isEditing && !todo.done">
-                    Done
-                </div>
-            </transition>
-            <transition name="fade" mode="out-in">
-                <div class="secondary" v-on:click="deleteTodo(todo)" v-show="!isEditing">
-                    Delete
-                </div>
-            </transition>
+            <div class="buttons-main">
+                <transition name="fade" mode="out-in">
+                    <div class="completed" v-if="!isEditing && todo.done" disabled>
+                        Completed
+                    </div>
+                    <div class="primary" v-on:click="completeTodo(todo)" v-if="!isEditing && !todo.done">
+                        Done
+                    </div>
+                </transition>
+                <transition name="fade" mode="out-in">
+                    <div class="secondary" v-on:click="deleteTodo(todo)" v-show="!isEditing">
+                        Delete
+                    </div>
+                </transition>
+            </div>
+            <span class="right floated edit icon" v-on:click="showForm">
+                <img src="../assets/edit.svg"/>
+            </span>
         </div>
 
         <div class="footer" v-if="!isEditing && todo.tags.length">
@@ -145,12 +151,28 @@
         margin-bottom: 0.5rem;
     }
 
+    .header p {
+        margin: 0;
+    }
+
+    .header .row {
+        border-bottom: 1px solid #CCCCCC;
+        justify-content: space-between;
+        margin-bottom: 0.5em;
+        padding: 0 0 0.25rem;
+    }
+
+    .buttons {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+    }
+
     .edit {
         cursor: pointer;
+        height: 1.5em;
         opacity: 0.66;
-        position: absolute;
-        right: 0;
-        top: 0;
     }
 
     .edit:hover {
@@ -158,6 +180,7 @@
     }
 
     .edit img {
+        height: 1.5rem;
         width: 1.5rem;
     }
 
@@ -227,9 +250,13 @@
         color: #847974;
         font-size: 14px;
         font-weight: 700;
-        margin: 0 0 1.5rem;
         position: relative;
-        width: 100%;
+        width: 66.66%;
+    }
+
+    .header .date {
+        text-align: right;
+        width: 33.33%;
     }
 
     .footer .tags {
@@ -298,6 +325,11 @@
     .list .buttons {
         padding: 0;
         width: auto;
+    }
+
+    .date {
+        font-size: 14px;
+        font-weight: 600;
     }
 
     @media screen and (max-width: 1024px) {

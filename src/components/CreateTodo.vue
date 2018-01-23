@@ -222,6 +222,10 @@ import { mapState } from 'vuex';
         min-width: 100%;
     }
 
+    .datepicker {
+        font-family: 'myriad-pro','Myriad Pro',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    }
+
     .styled-select {
         background: #FFFFFF;
         border: 1px solid #CCCCCC;
