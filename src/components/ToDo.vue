@@ -45,12 +45,8 @@
                     </div>
                     <div class="field">
                         <label>Tags</label>
-                        <div class="styled-select">
-                            <select v-model="tags">
-                                <option>Test tag 1</option>
-                                <option>Test tag the second</option>
-                                <option>Test tag the third</option>
-                            </select>
+                        <div class="styled-checkboxes" v-model="todo.tags">
+                                <input type="checkbox" v-for="(tags, index) in $store.state.globalTags" :project.sync="tags" v-if="index > 0" :name="tags.name"/>{{ tags.name }}<br/>
                         </div>
                     </div>
                     <div class="ui two button attached buttons">
@@ -93,10 +89,15 @@
 
 <script type="text/javascript">
     export default {
-        props: ['todo'],
+        props: [
+            'todo',
+            'projects',
+            'globalTags',
+        ],
         data() {
           return {
             isEditing: false,
+            tags: '',
           };
         },
         methods: {

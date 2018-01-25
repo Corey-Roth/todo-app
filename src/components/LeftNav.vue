@@ -4,9 +4,7 @@
 			<h2>Projects</h2>
 			<projects></projects>
 			<h2>Tags</h2>
-			<div class="tags">
-				<button class="secondary">+ New tag</button>
-			</div>
+			<tags></tags>
 		</nav>
 
 		<nav class="views">
@@ -21,11 +19,13 @@
 <script>
 	import { mapState } from 'vuex';
 	import Projects from './Projects';
+	import Tags from './Tags';
 
 	export default {
         props: ['isOpen'],
         components: {
         	Projects,
+        	Tags,
         },
         data() {
           return {

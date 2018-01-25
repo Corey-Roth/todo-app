@@ -9,6 +9,8 @@ export const state = {
   isOpen: false,
   projects: [{
   }],
+  globalTags: [{
+  }],
 };
 
 export const mutations = {
@@ -48,6 +50,14 @@ export const mutations = {
   //Projects
   addProject (state, {name, id}) {
     state.projects.push({
+      name,
+      id,
+    });
+  },
+
+  //Projects
+  addGlobalTag (state, {name, id}) {
+    state.globalTags.push({
       name,
       id,
     });

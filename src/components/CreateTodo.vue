@@ -37,12 +37,10 @@
                             </div>
                             <div class="field hidden-mobile">
                                 <label>Tags</label>
-                                <div class="styled-select">
-                                    <select v-model="tags" tabindex="5">
-                                        <option>Test tag 1</option>
-                                        <option>Test tag the second</option>
-                                        <option>Test tag the third</option>
-                                    </select>
+                                <div class="checkbox-group" v-model="tags">
+                                    <div class="styled-checkboxes" v-for="(tags, index) in $store.state.globalTags" :project.sync="tags" v-if="index > 0">
+                                        <input type="checkbox" :name="tags.name"/>{{ tags.name }}
+                                    </div>
                                 </div>
                             </div>
                             <div class="button-row">
@@ -65,6 +63,7 @@ import { mapState } from 'vuex';
     props: [
         'isOpen',
         'projects',
+        'globalTags',
     ],
     data() {
       return {
