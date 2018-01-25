@@ -49,12 +49,13 @@
           sendNewTag(tagName) {
           	if (this.tagName.length > 0) {
           		const name = this.tagName;
+          		const id = this._uid;
           		var obj = {
           			name,
+          			id,
           		}
           		this.$store.commit('addGlobalTag', obj);
           		this.addingTag = !this.addingTag;
-          		console.log(this.$store.state.globalTags);
           	}
           },
     	},
@@ -64,7 +65,7 @@
 <style>
 
 	/* new project */
-	.new-project {
+	.new-tag {
 		align-items: flex-start;
 		display: flex;
 		flex-direction: column;
@@ -72,20 +73,20 @@
 		width: 100%;
 	}
 
-	.new-project .styled-input {
+	.new-tag .styled-input {
 		font-size: 0.875rem;
 		padding: 0.5rem 0.25rem;
 		width: 100%;
 	}
 
-	.new-project .primary {
+	.new-tag .primary {
 		font-size: 0.875rem;
 		font-weight: 600;
 		margin: 1em 0 2em;
 		width: auto;
 	}
 
-	.project-list {
+	.tag-list {
 		max-height: 10em;
 		overflow-y: auto;
 	}

@@ -29,17 +29,17 @@
                                 <label>Project</label>
                                 <div class="styled-select">
                                     <select v-model="project" tabindex="4">
-                                        <option v-for="(project, index) in $store.state.projects" :project.sync="project" v-if="index > 0">
+                                        <option v-for="(project, index) in $store.state.projects" v-if="index > 0">
                                             {{ project.name }}
                                         </option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="field hidden-mobile">
+                            <div class="field hidden-mobile" v-if="$store.state.globalTags.length > 1">
                                 <label>Tags</label>
                                 <div class="checkbox-group" v-model="tags">
-                                    <div class="styled-checkboxes" v-for="(tags, index) in $store.state.globalTags" :project.sync="tags" v-if="index > 0">
-                                        <input type="checkbox" :name="tags.name"/>{{ tags.name }}
+                                    <div class="styled-checkboxes" v-for="(tags, index) in $store.state.globalTags" v-if="index > 0">
+                                        <input type="checkbox" name="tags" :id="tags.name" :value="tags.id"/><label :for="tags.name">{{ tags.name }}</label>
                                     </div>
                                 </div>
                             </div>
@@ -348,6 +348,53 @@ import { mapState } from 'vuex';
         background: none;
         border: 0 none;
     }
+
+    /*Checkboxes*/
+    .checkbox-group {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -0.25rem;
+    }
+
+    .styled-checkboxes {
+        font-size: 1.125em;
+        line-height: 90%;
+        padding: 0 0.25rem;
+    }
+
+    .styled-checkboxes input {
+        border: 0 none;
+        height: 0;
+        padding: 0;
+        position: absolute;
+        width: 0;
+        z-index: -1;
+    }
+
+     .styled-checkboxes label {
+        line-height: 90%;
+     }
+
+    .styled-checkboxes label:before {
+        background: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        border-radius: 4px;
+        content: "";
+        display: inline-block;
+        height: 1rem;
+        line-height: 90%;
+        margin-right: 4px;
+        padding: 0 0 0 2px;
+        position: relative;
+        top: 3px;
+        width: calc(1rem - 2px);
+    }
+
+    .styled-checkboxes input:checked + label:before {
+        background: #ccc;
+        //content: '✔';
+    }
+
 
     @media screen and (max-width: 767px) {
         .mobile-only {
