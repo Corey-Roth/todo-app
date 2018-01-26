@@ -43,10 +43,13 @@
                             </select>
                         </div>
                     </div>
-                    <div class="field">
+                    <div class="field" v-if="$store.state.globalTags.length > 1">
                         <label>Tags</label>
-                        <div class="styled-checkboxes" v-model="todo.tags">
-                                <input type="checkbox" v-for="(tags, index) in $store.state.globalTags" :project.sync="tags" v-if="index > 0" :name="tags.name"/>{{ tags.name }}<br/>
+                        <div class="styled-checkboxes" v-model="tags">
+                                <div class="styled-checkboxes" v-for="(tags, index) in $store.state.globalTags" v-if="index > 0">
+                                    <input type="checkbox" name="tags" :id="tags.name + '-card'" :value="tags.id"/>
+                                    <label :for="tags.name + '-card'">{{ tags.name }}</label>
+                                </div>
                         </div>
                     </div>
                     <div class="ui two button attached buttons">

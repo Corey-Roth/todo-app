@@ -40,7 +40,6 @@
         methods: {
             createTodo(newTodo) {
                 this.todos.push(newTodo);
-                console.log(newTodo.tags);
                 sweetalert('Success!', 'To-Do created!', 'success');
             },
         },
