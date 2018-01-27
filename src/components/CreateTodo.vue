@@ -64,6 +64,7 @@ import { mapState } from 'vuex';
         'isOpen',
         'projects',
         'globalTags',
+        'todoStore',
     ],
     data() {
       return {

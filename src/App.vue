@@ -14,6 +14,7 @@
     import sweetalert from 'sweetalert';
     import { mapState } from 'vuex';
     import TodoList from './components/TodoList';
+    import localforage from 'localforage';
     import CreateTodo from './components/CreateTodo';
     import LeftNav from './components/LeftNav';
     import store from './main';
@@ -40,6 +41,8 @@
         methods: {
             createTodo(newTodo) {
                 this.todos.push(newTodo);
+                var data = this.todos;
+                this.$store.commit('ADD_TASK', { task: data });
                 sweetalert('Success!', 'To-Do created!', 'success');
             },
         },
