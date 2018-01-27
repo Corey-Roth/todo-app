@@ -196,19 +196,11 @@
     }
 
     .completed {
-        background: #ebebeb;
         border: 0 none;
-        border-radius: 0.25em;
-        color: #777777;
-        cursor: not-allowed;
-        display: block;
-        font-size: 1em;
         line-height: 1;
-        padding: 1em 2em;
-        width: 100%;
     }
 
-    .primary, .completed {
+    .primary {
         margin: 0 auto;
         max-width: 20em;
         text-align: center;

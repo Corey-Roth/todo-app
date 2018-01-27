@@ -2,10 +2,10 @@
     <div class="todo-list">
         <div class="row button-row">
             <h1>Corey's to-do list</h1>
-            <button v-on:click="toggleView" class="toggle" v-bind:class="{ list: isList }">
+            <button v-on:click="toggleTheView()" class="toggle" v-bind:class="{ list: viewStatus }">
                 <img src="../assets/list-view.svg"/>
             </button>
-            <button v-on:click="toggleView" class="toggle" v-bind:class="{ list: !isList }">
+            <button v-on:click="toggleTheView()" class="toggle" v-bind:class="{ list: !viewStatus }">
                 <img src="../assets/grid-view.svg"/>
             </button>
         </div>
@@ -14,7 +14,7 @@
             <p>Get started by adding a task.</p>
         </div>
         <transition fade mode="out-in">
-            <div class="row card-row" v-bind:class="{ list: isList }">
+            <div class="row card-row" v-bind:class="{ list: viewStatus }">
                 <todo
                     v-on:delete-todo="deleteTodo"
                     v-on:complete-todo="completeTodo"
@@ -33,19 +33,24 @@
     import Todo from './ToDo';
 
     export default {
-      props: ['todos'],
+      props: [
+        'todos',
+        'isList',
+        ],
       components: {
         Todo,
       },
 
       data() {
         return {
-            isList: false,
         };
       },
         computed: {
             theCount() {
                 return this.$store.state.listCount;
+            },
+            viewStatus() {
+                return this.$store.state.isList;
             },
             ...mapState([
                 'store',
@@ -61,8 +66,8 @@
           this.todos[todoIndex].done = true;
           sweetalert('Success!', 'To-Do completed!', 'success');
         },
-        toggleView() {
-            this.isList = !this.isList;
+        toggleTheView() {
+            this.$store.commit('toggleView');
         },
       },
     };
@@ -90,6 +95,10 @@
 
     .card-row {
         align-items: flex-start;
+    }
+
+    .card-row.list {
+        max-width: 48em;
     }
 
     .toggle {

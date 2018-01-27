@@ -15,11 +15,14 @@
                         <div class="row">
                             <h2>Add a new task</h2>
                             <div class="field">
-                                <label>Title</label>
-                                <input v-model="titleText" type="text" class="styled-input" tabindex="1">
+                                <label class="required">Title</label>
+                                <input v-model="titleText" type="text" class="styled-input required" tabindex="1">
                             </div>
                             <div class="field">
-                                <input type="date" v-model="dueDate" class="datepicker styled-input" tabindex="2">
+                                <div class="styled-date">
+                                    <img src="../assets/calendar.svg"/>
+                                    <input type="date" v-model="dueDate" class="datepicker styled-input required" tabindex="2">
+                                </div>
                             </div>
                             <div class="field">
                                 <label>Description</label>
@@ -87,7 +90,7 @@ import { mapState } from 'vuex';
     },
     methods: {
       sendForm() {
-        if (this.titleText.length > 0 && this.descriptionText.length > 0) {
+        if (this.titleText.length > 0 && this.dueDate.length > 0) {
           const title = this.titleText;
           const description = this.descriptionText;
           const project = this.project;
@@ -394,6 +397,16 @@ import { mapState } from 'vuex';
     .styled-checkboxes input:checked + label:before {
         background: #ccc;
         //content: '✔';
+    }
+
+    .styled-date {
+        position: relative;
+    }
+
+    .styled-date img {
+        position: absolute;
+        right: 1rem;
+        top: 0.5rem;
     }
 
 

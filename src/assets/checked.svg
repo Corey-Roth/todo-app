@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="31.3" height="26.1" viewBox="0 0 31.3 26.1">
+  <defs>
+    <style>
+      .\31 1a71966-2d89-4440-8592-f9255e14258c, .\32 3551439-1cad-45a9-8893-b1d03ae43155 {
+        fill: #333;
+      }
+
+      .\32 3551439-1cad-45a9-8893-b1d03ae43155 {
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <title>checked</title>
+  <g id="e2b2fbe3-5a0a-4b57-a989-29c47ba278ff" data-name="Layer 2">
+    <g id="ca92deaf-9659-47fe-95e6-e35f17fda1cf" data-name="Layer 2">
+      <g>
+        <path class="11a71966-2d89-4440-8592-f9255e14258c" d="M22,4.1v20H2V4.1H22m2-2H0v24H24V2.1Z"/>
+        <g id="97f40ad6-9c36-4ca2-a936-ca7cdf8dcb6a" data-name="check_medium">
+          <polygon class="23551439-1cad-45a9-8893-b1d03ae43155" points="29.3 0 13.3 16 5.3 8 3.3 12 13.3 22 31.3 4 29.3 0"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

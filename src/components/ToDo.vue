@@ -1,13 +1,17 @@
 <template>
-    <div class="ui card" v-if="todo.title.length">
+    <div class="ui card" v-if="todo.title.length" v-bind:class="{ pinned:isPinned }">
         <transition name="fade" mode="out-in">
             <div class="content" v-if="!isEditing" key="saved">
                 <div class="header">
-                    <div class="row">
-                        <p class="projects">
+                    <div class="row" v-if="todo.project.length || todo.dueDate.length">
+                        <div class="todo-done" v-on:click="completeTodo(todo)" v-if="!isEditing && !todo.done && viewStatus"></div>
+                        <div class="completed" v-if="!isEditing && todo.done && viewStatus" disabled>
+                            <img src="../assets/checked.svg"/>
+                        </div>
+                        <p class="projects" v-if="todo.project.length">
                             {{ todo.project }}
                         </p>
-                        <p class="date">
+                        <p class="date" v-if="todo.dueDate.length">
                             {{ todo.dueDate }}
                         </p>
                     </div>
@@ -21,6 +25,9 @@
             </div>
 
             <div class="content horz" v-if="isEditing" key="edited">
+                <button class="close icon-btn" v-on:click="hideForm">
+                    <img src="../assets/close.svg"/>
+                </button>
                 <div class="form stacked">
                     <div class="field">
                         <label>Title</label>
@@ -52,34 +59,30 @@
                                 </div>
                         </div>
                     </div>
-                    <div class="ui two button attached buttons">
-                        <button class="primary" v-on:click="hideForm">
-                        Close
-                        </button>
-                    </div>
                 </div>
             </div>
         </transition>
 
         <div class="content buttons">
-            <div class="buttons-main">
+            <transition name="fade" mode="out-in">
+                <div class="completed" v-if="!isEditing && todo.done && !viewStatus" disabled>
+                    <img src="../assets/checked.svg"/>
+                </div>
+                <div class="todo-done" v-on:click="completeTodo(todo)" v-if="!isEditing && !todo.done && !viewStatus">
+                </div>
+            </transition>
+            <button class="primary save" v-on:click="hideForm" v-if="isEditing">Save</button>
+            <div class="buttons-right">
                 <transition name="fade" mode="out-in">
-                    <div class="completed" v-if="!isEditing && todo.done" disabled>
-                        Completed
-                    </div>
-                    <div class="primary" v-on:click="completeTodo(todo)" v-if="!isEditing && !todo.done">
-                        Done
+                    <div class="icon-btn" v-on:click="deleteTodo(todo)">
+                        <img src="../assets/delete.svg"/>
                     </div>
                 </transition>
-                <transition name="fade" mode="out-in">
-                    <div class="secondary" v-on:click="deleteTodo(todo)" v-show="!isEditing">
-                        Delete
-                    </div>
-                </transition>
+                <span class="icon-btn" v-on:click="showForm">
+                    <img src="../assets/edit.svg"/>
+                </span>
+                <div class="icon-btn" v-on:click="pinTodo" v-bind:class="{ pinned:isPinned }"><img src="../assets/pin.svg"/></div>
             </div>
-            <span class="right floated edit icon" v-on:click="showForm">
-                <img src="../assets/edit.svg"/>
-            </span>
         </div>
 
         <div class="footer" v-if="!isEditing && todo.tags.length">
@@ -96,12 +99,19 @@
             'todo',
             'projects',
             'globalTags',
+            'isList',
         ],
         data() {
           return {
             isEditing: false,
+            isPinned: false,
             tags: '',
           };
+        },
+        computed: {
+            viewStatus() {
+                return this.$store.state.isList;
+            },
         },
         methods: {
           completeTodo(todo) {
@@ -116,6 +126,9 @@
           hideForm() {
             this.isEditing = false;
           },
+          pinTodo() {
+            this.isPinned = !this.isPinned;
+          }
         },
     };
 </script>
@@ -127,10 +140,15 @@
         box-shadow: 0 2px 2px 0 rgba(20,0,0,0.16), 0 0 0 1px rgba(20,0,0,0.08);
         display: inline-block;
         margin: 0.5em;
+        order: 1;
         padding: 1.5em 0 0;
         position: relative;
         text-align: left;
         width: calc(33.33% - 1rem);
+    }
+
+    .card.pinned {
+        order: 0;
     }
 
     .card .content {
@@ -173,21 +191,6 @@
         position: relative;
     }
 
-    .edit {
-        cursor: pointer;
-        height: 1.5em;
-        opacity: 0.66;
-    }
-
-    .edit:hover {
-        opacity: 1;
-    }
-
-    .edit img {
-        height: 1.5rem;
-        width: 1.5rem;
-    }
-
     .list .stacked {
         align-items: flex-end;
         display: flex;
@@ -210,10 +213,7 @@
 
     .stacked {
         display: block;
-        margin-bottom: -1em;
-        margin-left: -1em;
-        margin-right: -1em;
-        margin-top: -1em;
+        margin-top: 1rem;
     }
 
     .stacked .primary {
@@ -283,7 +283,7 @@
     }
 
     .list .card {
-        align-items: center;
+        align-items: flex-start;
         border-radius: 0;
         display: flex;
         flex-wrap: wrap;
@@ -293,8 +293,8 @@
 
     .list .content {
         margin-bottom: 1em;
-        padding: 0 4.5em;
-        width: calc(100% - 12em);
+        padding: 0 0 0 2rem;
+        width: calc(100% - 4rem);
     }
 
     .list .footer {
@@ -303,19 +303,6 @@
 
     .list .primary, .list .secondary, .list .completed {
         max-width: 12em;
-    }
-
-    .list .secondary {
-        display: inline-block;
-        max-width: none;
-        padding: 1em 0 0;
-        text-align: left;
-        width: calc(100% - 12em);
-    }
-
-    .list .edit {
-        margin-left: 0.5rem;
-        position: static;
     }
 
     .list .header {
@@ -327,13 +314,88 @@
     }
 
     .list .buttons {
+        flex-direction: column;
+        justify-content: flex-end;
+        margin-left: 1rem;
         padding: 0;
-        width: auto;
+        width: 2rem;
+    }
+
+    .list .buttons-right {
+        display: flex;
+        flex-direction: column;
+        min-width: 1px;
+    }
+
+    .list .icon-btn {
+        margin: 0.5rem 0;
+    }
+
+    .list .header-row, .list .row {
+        display: flex;
+    }
+
+    .list .todo-done {
+        margin-right: 0.5rem;
+    }
+
+    .list .description {
+        padding-right: 2rem;
     }
 
     .date {
         font-size: 14px;
         font-weight: 600;
+    }
+
+    .todo-done {
+        border: 2px solid #E41f35;
+        display: inline-block;
+        height: 1.5rem;
+        line-height: 1.1;
+        padding: 0;
+        width: 1.5rem;
+    }
+
+    .todo-done:hover {
+        cursor: pointer;
+    }
+
+    .icon-btn {
+        background: none;
+        border: 0 none;
+        cursor: pointer;
+        height: 1.5em;
+        opacity: 0.33;
+        width: 1.5em;
+    }
+
+    .icon-btn img {
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    .icon-btn:hover, .icon-btn.pinned {
+        opacity: 1;
+    }
+
+    .buttons-right {
+        display: flex;
+        justify-content: space-between;
+        min-width: 7em;
+    }
+
+    .close {
+        height: 2em;
+        padding: 0;
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        width: 2em;
+    }
+
+    .save {
+        margin: 0;
     }
 
     @media screen and (max-width: 1024px) {

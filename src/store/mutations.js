@@ -16,6 +16,7 @@ export const state = {
   todoStore: localforage.createInstance({
     name: "nameHere"
   }),
+  isList: false,
 };
 
 export const mutations = {
@@ -50,6 +51,10 @@ export const mutations = {
 
   toggleMenu(menu) {
       menu.isOpen = !menu.isOpen;
+  },
+
+  toggleView(view) {
+      view.isList = !view.isList;
   },
 
   //Projects
