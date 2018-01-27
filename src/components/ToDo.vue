@@ -4,14 +4,19 @@
             <div class="content" v-if="!isEditing" key="saved">
                 <div class="header">
                     <div class="row" v-if="todo.project.length || todo.dueDate.length">
-                        <div class="todo-done" v-on:click="completeTodo(todo)" v-if="!isEditing && !todo.done && viewStatus"></div>
-                        <div class="completed" v-if="!isEditing && todo.done && viewStatus" disabled>
-                            <img src="../assets/checked.svg"/>
+                        <div class="header-left">
+                            <div class="todo-done" v-on:click="completeTodo(todo)" v-if="!isEditing && !todo.done && viewStatus"></div>
+                            <div class="completed" v-if="!isEditing && todo.done && viewStatus" disabled>
+                                <img src="../assets/checked.svg"/>
+                            </div>
+                            <p class="projects" v-if="todo.project.length">
+                                {{ todo.project }}
+                            </p>
                         </div>
-                        <p class="projects" v-if="todo.project.length">
-                            {{ todo.project }}
+                        <p class="date" v-if="todo.dueDate.length && todo.project.length">
+                            {{ todo.dueDate }}
                         </p>
-                        <p class="date" v-if="todo.dueDate.length">
+                        <p class="date left" v-if="todo.dueDate.length && todo.project.length < 1">
                             {{ todo.dueDate }}
                         </p>
                     </div>
@@ -263,6 +268,10 @@
         width: 33.33%;
     }
 
+    .date.left {
+        text-align: left;
+    }
+
     .footer .tags {
         margin: 0;
     }
@@ -311,6 +320,7 @@
 
     .list .projects {
         margin-bottom: 0.5em;
+        width: auto;
     }
 
     .list .buttons {
@@ -397,6 +407,12 @@
     .save {
         margin: 0;
     }
+
+    .list .header-left {
+        display: flex;
+    }
+
+    /* Media queries */
 
     @media screen and (max-width: 1024px) {
         .card {
