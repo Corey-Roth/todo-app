@@ -76,12 +76,7 @@
 <style>
 
     .todo-list {
-        //max-width: 95rem;
         padding-left: 15rem;
-    }
-
-    .todo-list .row {
-        //max-width: 76em;
     }
 
     .row {

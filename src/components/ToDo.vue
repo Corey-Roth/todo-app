@@ -2,28 +2,7 @@
     <div class="ui card" v-if="todo.title.length" v-bind:class="{ pinned:isPinned }">
         <transition name="fade" mode="out-in">
             <div class="content" v-if="!isEditing" key="saved">
-                <div class="header">
-                    <div class="row" v-if="todo.project.length || todo.dueDate.length">
-                        <div class="header-left">
-                            <div class="todo-done" v-on:click="completeTodo(todo)" v-if="!isEditing && !todo.done && viewStatus"></div>
-                            <div class="completed" v-if="!isEditing && todo.done && viewStatus" disabled>
-                                <img src="../assets/checked.svg"/>
-                            </div>
-                            <p class="projects" v-if="todo.project.length">
-                                {{ todo.project }}
-                            </p>
-                        </div>
-                        <p class="date" v-if="todo.dueDate.length && todo.project.length">
-                            {{ todo.dueDate }}
-                        </p>
-                        <p class="date left" v-if="todo.dueDate.length && todo.project.length < 1">
-                            {{ todo.dueDate }}
-                        </p>
-                    </div>
-                    <div class="header-row">
-                        {{ todo.title }}
-                    </div>
-                </div>
+                <todo-header v-on:complete-todo="completeTodo" :key="todo.id" :todo.sync="todo"></todo-header>
                 <div class="description">
                     <p>{{ todo.description }}</p>
                 </div>
@@ -76,13 +55,13 @@
                 <div class="todo-done" v-on:click="completeTodo(todo)" v-if="!isEditing && !todo.done && !viewStatus">
                 </div>
             </transition>
-            <button class="primary save" v-on:click="hideForm" v-if="isEditing">Save</button>
+            <div class="buttons-left">
+                <button class="primary save" v-on:click="hideForm" v-if="isEditing">Save</button>
+                <div class="icon-btn" v-on:click="deleteTodo(todo)" v-if="isEditing">
+                    <img src="../assets/delete.svg"/>
+                </div>
+            </div>
             <div class="buttons-right">
-                <transition name="fade" mode="out-in">
-                    <div class="icon-btn" v-on:click="deleteTodo(todo)">
-                        <img src="../assets/delete.svg"/>
-                    </div>
-                </transition>
                 <span class="icon-btn" v-on:click="showForm">
                     <img src="../assets/edit.svg"/>
                 </span>
@@ -99,6 +78,8 @@
 </template>
 
 <script type="text/javascript">
+    import todoHeader from './TodoHeader';
+
     export default {
         props: [
             'todo',
@@ -106,6 +87,9 @@
             'globalTags',
             'isList',
         ],
+        components: {
+            todoHeader,
+        },
         data() {
           return {
             isEditing: false,
@@ -166,27 +150,6 @@
 
     .content {
         margin-bottom: 1.5em;
-    }
-
-    .header {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        font-size: 2em;
-        font-weight: 300;
-        line-height: 90%;
-        margin-bottom: 0.5rem;
-    }
-
-    .header p {
-        margin: 0;
-    }
-
-    .header .row {
-        border-bottom: 1px solid #CCCCCC;
-        justify-content: space-between;
-        margin-bottom: 0.5em;
-        padding: 0 0 0.25rem;
     }
 
     .buttons {
@@ -251,27 +214,6 @@
         width: 100%;
     }
 
-    .header-row {
-        width: 100%;
-    }
-
-    .header .projects {
-        color: #847974;
-        font-size: 14px;
-        font-weight: 700;
-        position: relative;
-        width: 66.66%;
-    }
-
-    .header .date {
-        text-align: right;
-        width: 33.33%;
-    }
-
-    .date.left {
-        text-align: left;
-    }
-
     .footer .tags {
         margin: 0;
     }
@@ -287,7 +229,7 @@
 
     /* List code */
     .list {
-        display: block;
+        flex-direction: column;
         padding: 0;
     }
 
@@ -302,8 +244,8 @@
 
     .list .content {
         margin-bottom: 1em;
-        padding: 0 0 0 2rem;
-        width: calc(100% - 4rem);
+        padding: 0 0 0 1rem;
+        width: calc(100% - 3rem);
     }
 
     .list .footer {
@@ -314,21 +256,12 @@
         max-width: 12em;
     }
 
-    .list .header {
-        justify-content: flex-start;
-    }
-
-    .list .projects {
-        margin-bottom: 0.5em;
-        width: auto;
-    }
-
     .list .buttons {
         flex-direction: column;
         justify-content: flex-end;
         margin-left: 1rem;
         padding: 0;
-        width: 2rem;
+        width: 1rem;
     }
 
     .list .buttons-right {
@@ -350,12 +283,8 @@
     }
 
     .list .description {
+        display: none;
         padding-right: 2rem;
-    }
-
-    .date {
-        font-size: 14px;
-        font-weight: 600;
     }
 
     .todo-done {
@@ -392,7 +321,14 @@
     .buttons-right {
         display: flex;
         justify-content: space-between;
-        min-width: 7em;
+        min-width: 4em;
+    }
+
+    .buttons-left {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        min-width: 9em;
     }
 
     .close {
@@ -408,12 +344,7 @@
         margin: 0;
     }
 
-    .list .header-left {
-        display: flex;
-    }
-
     /* Media queries */
-
     @media screen and (max-width: 1024px) {
         .card {
             margin: 0 0.5rem 1rem;
@@ -471,12 +402,6 @@
 
         .list .secondary {
             max-width: 25%;
-        }
-    }
-
-    @media screen and (max-width: 540px) {
-        .card .header {
-            font-size: 1.5em;
         }
     }
 </style>
